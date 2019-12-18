@@ -18,7 +18,9 @@ app.set("view engine", "ejs")
 app.use(urlencodedParser)
 app.use(bodyParser.json())
 
-app.use('/', (req, res) => res.send('Running'));
+app.use('/', (req, res) => res.render('dashboard'));
+app.use('/api/users', (req, res) => res.send('home'));
+
 app.use('/api/users', require('./routes/api/users'));
 app.use('/api/auth', require('./routes/api/auth'));
 app.use('/api/profile', require('./routes/api/profile'));

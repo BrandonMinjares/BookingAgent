@@ -2,19 +2,22 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    color: black;
-}
-
-
-.main-header {
-    background-size: cover;
-    background-position:center;
-    height: 100vh;
-    color: #fff;
-    position: relative;
-    min-height: 600px;
-}
-
-.info .main-header {
-    padding-top: 110px;
-}
+  }
+  
+  html {
+    background-color: #fff;
+    color:  #555;
+  }
+  
+  .dashboard {
+      height: 100vh;
+      min-height: 500px;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-color: #fdf6e3;
+    }
+  
+    .navbar{
+      margin-bottom: 0 !important;
+  }
+  
