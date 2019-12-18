@@ -4,8 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "node server",
-    "server": "nodemon server"
+    "start": "NODE_ENV=production node server",
+    "dev": "nodemon server"
   },
   "author": "Brandon Minjares",
   "license": "ISC",
@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "concurrently": "^4.1.0",
-    "nodemon": "^1.19.1"
+    "dotenv": "^8.2.0",
+    "nodemon": "^1.19.4"
   }
 }
