@@ -18,13 +18,13 @@ router.delete('/:id', (req, res) => {
     res.send(`Deleted band ${req.params.id}`);
 });
 
-/*const { 
+const { 
     getBands,
     getBand,
     createBand,
     updateBand,
     deleteBand
- } = require('../controllers/bands');
+ } = require('../../controllers/bands');
 
 router
     .route('/')
@@ -36,5 +36,5 @@ router
     .get(getBand)
     .put(updateBand)
     .delete(deleteBand);
-*/
+
 module.exports = router;
