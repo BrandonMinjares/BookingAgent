@@ -1,6 +1,8 @@
 const express = require('express');
 const dotenv = require('dotenv');
 
+const bands = require('./routes/api/bands');
+
 // Load en vars
 dotenv.config({ path: './config/config.env' })
 

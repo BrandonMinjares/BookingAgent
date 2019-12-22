@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const { 
+/*const { 
     getBands,
     getBand,
     createBand,
@@ -19,5 +19,5 @@ router
     .get(getBand)
     .put(updateBand)
     .delete(deleteBand);
-
+*/
 module.exports = router;
