@@ -9,6 +9,7 @@ const {
     deleteBand
  } = require('../../controllers/bands');
 
+ // Connects specific methods in Bands controller with a specific HTTP Request 
 router
     .route('/')
     .get(getBands)
