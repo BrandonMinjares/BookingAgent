@@ -1,14 +1,18 @@
 const express = require('express');
 const dotenv = require('dotenv');
 
+// Route files
 const bands = require('./routes/api/bands');
 
-// Load en vars
+// Load env vars
 dotenv.config({ path: './config/config.env' })
 
 const connectDB = require('./config/db');
 
 const app = express();
+
+// Mount routes
+app.use('/api/v1/bands', bands);
 
 const path = require('path');
 const bodyParser = require('body-parser')
