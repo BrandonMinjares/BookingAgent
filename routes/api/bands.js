@@ -1,6 +1,14 @@
 const express = require('express');
 const router = express.Router();
 
+
+router.get('/', (req, res) => {
+    res.send('Works');
+});
+
+router.get('/:id', (req, res) => {
+    res.send(`The band is ${req.params.id}`);
+});
 /*const { 
     getBands,
     getBand,
