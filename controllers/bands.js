@@ -67,7 +67,13 @@ exports.updateBand = async (req, res, next) => {
 // @route   PUT /api/v1/bands/:id
 // @access  Private
 exports.deleteBand = async (req, res, next) => {
-    res
-    .status(200)
-    .json({ success: true, msg: `Delete band ${req.params.id}`});
+    try {
+        const band = await Band.findByIdAndDelete(req.params.id);
+        if(!band) {
+            return res.status(400).json({ success: false });
+        }
+        res.status(200).json({ success: true, data: {} })
+    } catch(err) {
+        res.status(400).json({ success: false });
+    }
 };
