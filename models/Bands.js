@@ -62,5 +62,11 @@ const BandsSchema = new mongoose.Schema({
     averageCost: Number,
     photo: {
         type: String
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now
     }
 });
+
+module.exports = mongoose.model('Bands', BandsSchema);
