@@ -25,8 +25,6 @@ app.use('/public', express.static(path.join(__dirname, 'public')));
 
 app.set("view engine", "ejs");
 
-
-
 app.use('/', (req, res) => res.render('dashboard'));
 app.use('/api/users', (req, res) => res.send('home'));
 app.get('/signin', (req, res) => res.send('/signin'));
