@@ -1,4 +1,5 @@
-  
+const Band = require('../models/Bands');
+
 // @desc    Get all bands
 // @route   GET /api/v1/bands
 // @access  Public
@@ -21,6 +22,7 @@ exports.getBand = (req, res, next) => {
 // @route   POST /api/v1/bands/
 // @access  Private
 exports.createBand = (req, res, next) => {
+    console.log(req.body);
     res
     .status(200)
     .json({ success: true, msg: 'Create new band'});

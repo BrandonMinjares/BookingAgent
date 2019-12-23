@@ -9,27 +9,23 @@ dotenv.config({ path: './config/config.env' })
 
 const connectDB = require('./config/db');
 
+// Conect Database
+connectDB();
+
 const app = express();
+
+app.use(express.json());
 
 // Mount routes
 app.use('/api/v1/bands', bands);
 
 const path = require('path');
-const bodyParser = require('body-parser')
 
-// Conect Database
-connectDB();
+app.use('/public', express.static(path.join(__dirname, 'public')));
 
-app.use(express.json({ extended: false }));
-app.use('/public', express.static(path.join(__dirname, 'public')))
+app.set("view engine", "ejs");
 
 
-const urlencodedParser = bodyParser.urlencoded({ extended: false });
-
-app.set("view engine", "ejs")
-
-app.use(urlencodedParser)
-app.use(bodyParser.json())
 
 app.use('/', (req, res) => res.render('dashboard'));
 app.use('/api/users', (req, res) => res.send('home'));
