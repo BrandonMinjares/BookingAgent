@@ -18,6 +18,12 @@ exports.getBands = async (req, res, next) => {
 exports.getBand = async (req, res, next) => {
     try { 
         const band = await Band.findById(req.params.id);
+
+        // If the band does not exist you also get an error message
+        if(!band) {
+            return res.status(400).json({ success: false });
+        }
+
         res.status(200).json({ success: true, data: band});
     } catch(err) {
         res.status(200).json({ success: false});
