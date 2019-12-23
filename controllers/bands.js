@@ -6,7 +6,7 @@ const Band = require('../models/Bands');
 exports.getBands = async (req, res, next) => {
     try {
         const bands = await Band.find();
-        res.status(200).json({ success: true, data: bands});
+        res.status(200).json({ success: true, count: bands.length, data: bands});
     } catch(err) {
         res.status(200).json({ success: false});
     }
