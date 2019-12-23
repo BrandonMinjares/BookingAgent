@@ -15,10 +15,13 @@ exports.getBands = async (req, res, next) => {
 // @desc    Get single band
 // @route   GET /api/v1/bands/:id
 // @access  Public
-exports.getBand = (req, res, next) => {
-    res
-    .status(200)
-    .json({ success: true, msg: `Show band ${req.params.id}`});
+exports.getBand = async (req, res, next) => {
+    try { 
+        const band = await Band.findById(req.params.id);
+        res.status(200).json({ success: true, data: band});
+    } catch(err) {
+        res.status(200).json({ success: false});
+    }
 };
 
 // @desc    Create new band
