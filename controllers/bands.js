@@ -49,15 +49,18 @@ exports.createBand = async (req, res, next) => {
 // @route   PUT /api/v1/bands/:id
 // @access  Private
 exports.updateBand = async (req, res, next) => {
-    const band = await Band.findByIdAndUpdate(req.params.id, req.body, {
-        new: true,
-        runValidators: true
-    });
-    if(!band) {
-        return res.status(400).json({ success: false });
+    try {
+        const band = await Band.findByIdAndUpdate(req.params.id, req.body, {
+            new: true,
+            runValidators: true
+        });
+        if(!band) {
+            return res.status(400).json({ success: false });
+        }
+        res.status(200).json({ success: true, data: band })
+    } catch(err) {
+        res.status(400).json({ success: false });
     }
-
-    res.status(200).json({ success: true, data: band })
 };
 
 // @desc    Delete band
