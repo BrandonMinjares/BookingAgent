@@ -3,6 +3,7 @@ const dotenv = require('dotenv');
 
 // Route files
 const bands = require('./routes/api/bands');
+const users = require('./routes/api/users')
 
 // Load env vars
 dotenv.config({ path: './config/config.env' })
@@ -18,6 +19,7 @@ app.use(express.json());
 
 // Mount routes
 app.use('/api/v1/bands', bands);
+app.use('/api/v1/users', users);
 
 const path = require('path');
 
