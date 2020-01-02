@@ -3,7 +3,8 @@ const dotenv = require('dotenv');
 
 // Route files
 const bands = require('./routes/api/bands');
-const users = require('./routes/api/users')
+const users = require('./routes/api/users');
+const errorHandler = require('./middleware/error');
 
 // Load env vars
 dotenv.config({ path: './config/config.env' })
@@ -20,6 +21,10 @@ app.use(express.json());
 // Mount routes
 app.use('/api/v1/bands', bands);
 app.use('/api/v1/users', users);
+
+// Error handler must be placed after above routes because routes are
+// used in a linear order, therefore error handler needs to catch error from routes above
+app.use(errorHandler);
 
 const path = require('path');
 

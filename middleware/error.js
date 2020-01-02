@@ -1,15 +1,11 @@
 const errorHandler = (err, req, res, next) => {
     // Log to console for dev
-    console.log(err.stack.red);
+    console.log(err.stack);
 
-    res.status(500);
-}
+    res.status(500).json({
+        success: false,
+        error: err.message
+    });
+};
 
-
-function errorHandler (err, req, res, next) {
-    if (res.headersSent) {
-      return next(err)
-    }
-    res.status(500)
-    res.render('error', { error: err })
-  }
+module.exports = errorHandler;
