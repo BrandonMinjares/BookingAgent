@@ -77,3 +77,13 @@ exports.deleteBand = async (req, res, next) => {
         res.status(400).json({ success: false });
     }
 };
+
+
+// @desc    Get bands within a radius
+// @route   GET /api/v1/bands/radius/:zipcode/:distance
+// @access  Private
+exports.getBandsInRadius = async (req, res, next) => {
+    const { zipCode, distance } = req.params;
+
+    // Get lat/lng from geocoder
+};
