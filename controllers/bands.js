@@ -59,8 +59,8 @@ exports.updateBand = async (req, res, next) => {
             runValidators: true
         });
         if(!band) {
-            return res.status(400).json({ success: false });
-        }
+            return next(new ErrorResponse(`Band not found with id of ${req.params.id}`, 404));
+        } 
         res.status(200).json({ success: true, data: band })
     } catch(err) {
         next(err);
@@ -74,8 +74,8 @@ exports.deleteBand = async (req, res, next) => {
     try {
         const band = await Band.findByIdAndDelete(req.params.id);
         if(!band) {
-            return res.status(400).json({ success: false });
-        }
+            return next(new ErrorResponse(`Band not found with id of ${req.params.id}`, 404));
+        } 
         res.status(200).json({ success: true, data: {} })
     } catch(err) {
         next(err);
