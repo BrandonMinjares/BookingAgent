@@ -9,7 +9,7 @@ exports.getBands = async (req, res, next) => {
         const bands = await Band.find();
         res.status(200).json({ success: true, count: bands.length, data: bands});
     } catch(err) {
-        res.status(200).json({ success: false});
+        next(err);
     }
 };
 
@@ -23,12 +23,14 @@ exports.getBand = async (req, res, next) => {
         // If the ID is in the correct format but the band does not exist you get custom error message
         if(!band) {
             return next(new ErrorResponse(`Band not found with id of ${req.params.id}`, 404));
-        }
+        } 
 
         res.status(200).json({ success: true, data: band});
     } catch(err) {
         // If the ID is in the incorrect format you get custom error message
-        next(new ErrorResponse(`Band not found with id of ${req.params.id}`, 404));
+        
+        next(err);
+        //next(new ErrorResponse(`Band not found with id of ${req.params.id}`, 404));
     }
 };
 
@@ -43,7 +45,7 @@ exports.createBand = async (req, res, next) => {
             data: band
         });
     } catch(err) {
-        res.status(400).json({ success: false })
+        next(err);
     }
 };
 
@@ -61,7 +63,7 @@ exports.updateBand = async (req, res, next) => {
         }
         res.status(200).json({ success: true, data: band })
     } catch(err) {
-        res.status(400).json({ success: false });
+        next(err);
     }
 };
 
@@ -76,7 +78,7 @@ exports.deleteBand = async (req, res, next) => {
         }
         res.status(200).json({ success: true, data: {} })
     } catch(err) {
-        res.status(400).json({ success: false });
+        next(err);
     }
 };
 
