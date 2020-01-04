@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const slugify = require('slugify');
+const geocoder = require('../utils/geocoder');
 
 const BandsSchema = new mongoose.Schema({
     user: {
@@ -75,5 +76,12 @@ BandsSchema.pre('save', function(next) {
     this.slug = slugify(this.name, { lower: true });
     next();
 });
+
+// Geocode & create location field
+BandsSchema.pre('save', function(next) {
+    
+    next();
+});
+
 
 module.exports = mongoose.model('Bands', BandsSchema);
