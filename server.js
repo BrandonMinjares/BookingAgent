@@ -1,15 +1,15 @@
 const express = require('express');
 const dotenv = require('dotenv');
 
-// Route files
-const bands = require('./routes/api/bands');
-const users = require('./routes/api/users');
-const errorHandler = require('./middleware/error');
-
 // Load env vars
 dotenv.config({ path: './config/config.env' })
 
 const connectDB = require('./config/db');
+
+// Route files
+const bands = require('./routes/api/bands');
+const users = require('./routes/api/users');
+const errorHandler = require('./middleware/error');
 
 // Conect Database
 connectDB();
