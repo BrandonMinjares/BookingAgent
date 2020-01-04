@@ -40,8 +40,14 @@ const BandsSchema = new mongoose.Schema({
         ]
     },
     location: {
+        // GeoJSON Point
         type: {
-            type: String
+            type: String,
+            enum: ['Point']
+        },
+        coordinates: {
+            type: [Number],
+            index: '2dsphere'
         },
         formattedAddress: String,
         city: String,
@@ -78,8 +84,11 @@ BandsSchema.pre('save', function(next) {
 });
 
 // Geocode & create location field
-BandsSchema.pre('save', function(next) {
-    
+BandsSchema.pre('save', async function(next) {
+    const loc = await geocoder.geocode(this.address);
+    this.location = {
+
+    }
     next();
 });
 
