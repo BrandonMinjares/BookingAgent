@@ -47,15 +47,18 @@ const BandsSchema = new mongoose.Schema({
         // GeoJSON Point
         type: {
             type: String,
-            enum: ['Point']
+            enum: ['Point'],
         },
         coordinates: {
             type: [Number],
-            index: '2dsphere'
+            index: '2dsphere',
         },
         formattedAddress: String,
+        street: String,
         city: String,
         state: String,
+        country: String,
+        zipcode: String,
         country: String
     },
     genre: {

@@ -1,5 +1,6 @@
 const ErrorResponse = require('../utils/errorResponse');
 const Band = require('../models/Bands');
+const geocoder = require('../utils/geocoder');
 const asyncHandler = require('../middleware/async');
 
 
@@ -65,8 +66,27 @@ exports.deleteBand = asyncHandler(async (req, res, next) => {
 // @desc    Get bands within a radius
 // @route   GET /api/v1/bands/radius/:zipcode/:distance
 // @access  Private
-exports.getBandsInRadius = async (req, res, next) => {
-    const { zipCode, distance } = req.params;
+exports.getBandsInRadius = asyncHandler(async (req, res, next) => {
+    const { zipcode, distance } = req.params;
 
     // Get lat/lng from geocoder
-};
+    const loc = await geocoder.geocode(zipcode);
+    const lat = loc[0].latitude;
+    const lng = loc[0].longitude;
+
+    // Calc radius using radians
+    // Divide distance by radius of Earth
+    // Earth Radius = 3963 miles = 6378 kilometers
+    //const EarthDistance = 3963;
+    const radius = distance / 3963;
+
+    const bands = await Band.find({
+        location: { $geoWithin: { $centerSphere: [ [ lng, lat ], radius ] } }
+    });
+
+    res.status(200).json({
+        success: true,
+        count: bands.length,
+        data: bands
+    });
+});

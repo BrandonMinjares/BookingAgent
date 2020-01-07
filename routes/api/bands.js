@@ -6,8 +6,11 @@ const {
     getBand,
     createBand,
     updateBand,
-    deleteBand
+    deleteBand,
+    getBandsInRadius
  } = require('../../controllers/bands');
+
+ router.route('/radius/:zipcode/:distance').get(getBandsInRadius);
 
  // Connects specific methods in Bands controller with a specific HTTP Request 
 router
