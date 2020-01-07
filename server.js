@@ -9,6 +9,7 @@ const connectDB = require('./config/db');
 // Route files
 const bands = require('./routes/api/bands');
 const users = require('./routes/api/users');
+const auth = require('./routes/api/auth');
 const errorHandler = require('./middleware/error');
 
 // Conect Database
@@ -21,6 +22,8 @@ app.use(express.json());
 // Mount routes
 app.use('/api/v1/bands', bands);
 app.use('/api/v1/users', users);
+app.use('/api/v1/auth', auth);
+
 
 // Error handler must be placed after above routes because routes are
 // used in a linear order, therefore error handler needs to catch error from routes above
