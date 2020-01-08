@@ -16,10 +16,7 @@ exports.register = asyncHandler(async(req, res, next) => {
         password
     });
 
-    // Create token
-    const token = user.getSignedJwtToken();
-
-    res.status(200).json({ success: true, token: token });
+    sendTokenResponse(user, 200, res);
 });
 
 
@@ -50,11 +47,22 @@ exports.login = asyncHandler(async(req, res, next) => {
     // Important to make !user and !isMatch function return same message to ensure that the
     // person who entered the information isn't sure whether the error was an incorrect email
     // or an incorrect password -- Extra Security
+    sendTokenResponse(user, 200, res);
+});
 
 
-
+// Get token from Model, create cookie and send response
+const sendTokenResponse = (user, statusCode, res) => {
     // Create token
     const token = user.getSignedJwtToken();
 
-    res.status(200).json({ success: true, token: token });
-});
+    const options = {
+        expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRE * 24 * 60 * 60 * 1000),
+        httpOnly: true
+    };
+
+    res
+        .status(statusCode)
+        .cookie('token', token, options)
+        .json({ success: true, token });
+};

@@ -1,6 +1,6 @@
 const express = require('express');
 const dotenv = require('dotenv');
-
+const cookieParser = require('cookie-parser');
 // Load env vars
 dotenv.config({ path: './config/config.env' })
 
@@ -18,6 +18,9 @@ connectDB();
 const app = express();
 
 app.use(express.json());
+
+// Cookie parser
+app.use(cookieParser());
 
 // Mount routes
 app.use('/api/v1/bands', bands);
