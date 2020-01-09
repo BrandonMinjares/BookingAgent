@@ -6,7 +6,7 @@ const router = express.Router();
 router.post('/register', register);
 router.post('/login', login);
 
-/*
+
 const bcrypt = require('bcryptjs');
 const auth = require('../../middleware/auth');
 const User = require('../../models/User');
@@ -86,5 +86,5 @@ router.post(
         }
     }
 );
-*/
+
 module.exports = router;
