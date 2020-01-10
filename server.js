@@ -1,6 +1,7 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
 // Load env vars
 dotenv.config({ path: './config/config.env' })
 
@@ -33,6 +34,7 @@ app.use('/api/v1/auth', auth);
 app.use(errorHandler);
 
 const path = require('path');
+app.use(bodyParser.urlencoded({ extended: true })); 
 
 app.use('/public', express.static(path.join(__dirname, 'public')));
 
