@@ -1,21 +1,6 @@
-import Axios from "axios";
 
-const register = (name, email, password) => {
-
-};
-/*
-document.querySelector('.form').addEventListener('submit', e => {
-    e.preventDefault();
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-});
-
-*/
+document.getElementById('registerForm').addEventListener('click', registerUser());
 
 function registerUser() {
-    axious({
-        method: 'get',
-
-    });
+    alert('HeyThere');
 }
