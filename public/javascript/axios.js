@@ -1,17 +1,16 @@
 
 
-document.getElementById('registerForm').addEventListener('click', registerUser());
+// const registerForm = document.getElementById('registerForm');
 
-function registerUser() {
-    axios({
-        method: 'post',
-        url: 'http://localhost:5000/api/v1/users/',
-        data: {
-            name: 'name',
-            email: 'email',
-            password: 'password'
-        }
-    })
-    .then(res => showOutput(res))
-    .catch(err => console.log(err));
-}
+// const registerUser = () => {
+//     alert('hey');
+//     /*axios.get('/api/v1/users/').then(response => {
+//         console.log(response);
+//     });*/
+// };
+
+// registerForm.addEventListener('submit', registerUser);
+
+document.getElementById('hey').addEventListener('submit', function() {
+    alert('hey');
+});
