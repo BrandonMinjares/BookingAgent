@@ -20,6 +20,7 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: [true, 'Please add a password'],
         minlength: 6,
+        // select: false makes it so that the password wont show up in any output
         select: false
     },
     resetPasswordToken: String,
