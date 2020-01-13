@@ -26,7 +26,6 @@ exports.register = asyncHandler(async(req, res, next) => {
 exports.login = asyncHandler(async(req, res, next) => {
     const { email, password } = req.body;
     console.log('logged in');
-    console.log(email + password);
 
     // Validate email and password
     if(!email || !password) {
@@ -72,3 +71,13 @@ const sendTokenResponse = (user, statusCode, res) => {
         .cookie('token', token, options)
         .json({ success: true, token });
 };
+
+
+exports.forgetPassword = (req, res, next) => {
+    
+};
+
+exports.resetPassword = (req, res, next) => {
+
+};
+
