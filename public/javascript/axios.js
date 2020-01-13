@@ -24,37 +24,17 @@ const registerUser = async (name, email, password) => {
     }
 };
 
-/*
-const registerUser = () => {
-    axios.post({
-        method: 'POST',
-        url: 'http://localhost:5000/api/v1/auth/register',
-        data: {
-            name: 'name',
-            email: 'email',
-            password: 'password'
-        }
-    })
-    .then(res => console.log(res))
-    .catch(err => console.log(err));
-}
-*/
-
-
-
-
-
 // Login FORM
 const loginForm = document.querySelector('.loginForm');
 
 loginForm.addEventListener('submit', e => {
     e.preventDefault();
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
+    const email = document.getElementById('email2').value;
+    const password = document.getElementById('password2').value;
     loginUser(email, password);
 });
 
-/*
+
 const loginUser = async (email, password) => {
     try {
         const res = await axios({
@@ -70,5 +50,3 @@ const loginUser = async (email, password) => {
         console.log(err);
     }
 };
-
-*/
