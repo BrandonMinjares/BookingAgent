@@ -18,6 +18,7 @@ connectDB();
 
 const app = express();
 
+// Body parser
 app.use(express.json());
 
 // Cookie parser
