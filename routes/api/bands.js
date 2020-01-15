@@ -4,7 +4,7 @@ const Band = require('../../models/Bands');
 
 const router = express.Router();
 
-const { protect } = require('../../middleware/auth');
+ const { protect } = require('../../middleware/auth');
 
 const { 
     getBands,
