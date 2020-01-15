@@ -9,7 +9,7 @@ const connectDB = require('./config/db');
 
 // Route files
 const bands = require('./routes/api/bands');
-const users = require('./routes/api/users');
+const user = require('./routes/api/user');
 const auth = require('./routes/api/auth');
 const errorHandler = require('./middleware/error');
 
@@ -26,7 +26,7 @@ app.use(cookieParser());
 
 // Mount routes
 app.use('/api/v1/bands', bands);
-app.use('/api/v1/users', users);
+app.use('/api/v1/user', user);
 app.use('/api/v1/auth', auth);
 
 
@@ -44,7 +44,7 @@ app.set("view engine", "ejs");
 app.use('/', (req, res) => res.render('dashboard'));
 app.use('/api/users', (req, res) => res.send('home'));
 app.get('/signin', (req, res) => res.send('/signin'));
-app.use('/api/users', require('./routes/api/users'));
+app.use('/api/users', require('./routes/api/user'));
 app.use('/api/auth', require('./routes/api/auth'));
 app.use('/api/profile', require('./routes/api/profile'));
 
