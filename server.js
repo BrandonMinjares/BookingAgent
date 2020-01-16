@@ -3,23 +3,25 @@ const express = require('express');
 const dotenv = require('dotenv');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+const connectDB = require('./config/db');
+const errorHandler = require('./middleware/error');
+const morgan = require('morgan');
 
 
 // Load env vars
 dotenv.config({ path: './config/config.env' })
 
-const connectDB = require('./config/db');
+// Conect Database
+connectDB();
 
 // Route files
 const bands = require('./routes/bands');
 const user = require('./routes/user');
 const auth = require('./routes/auth');
-const errorHandler = require('./middleware/error');
-
-// Conect Database
-connectDB();
 
 const app = express();
+
+
 
 // Body parser
 app.use(express.json());
@@ -27,10 +29,16 @@ app.use(express.json());
 // Cookie parser
 app.use(cookieParser());
 
+if (process.env.NODE_ENV === 'development') {
+    app.use(morgan('dev'));
+}
+
+app.use('/public', express.static(path.join(__dirname, 'public')));
+
 // Mount routes
 app.use('api/v1/bands', bands);
-app.use('api/v1/user', user);
 app.use('api/v1/auth', auth);
+app.use('api/v1/user', user);
 
 
 // Error handler must be placed after above routes because routes are
@@ -39,16 +47,15 @@ app.use(errorHandler);
 
 app.use(bodyParser.urlencoded({ extended: true })); 
 
-app.use('/public', express.static(path.join(__dirname, 'public')));
 
 app.set("view engine", "ejs");
 
 app.use('/', (req, res) => res.render('dashboard'));
-app.use('/users', (req, res) => res.send('home'));
+/* app.use('/users', (req, res) => res.send('home'));
 app.get('/signin', (req, res) => res.send('/signin'));
 app.use('/users', require('./routes/user'));
 app.use('/auth', require('./routes/auth'));
-app.use('/profile', require('./routes/profile'));
+app.use('/profile', require('./routes/profile')); */
 
 const PORT = process.env.PORT || 5000;
 const server = app.listen(PORT, () => console.log(`Server started in ${process.env.NODE_ENV} mode on port ${PORT}`));

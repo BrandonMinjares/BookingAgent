@@ -1,19 +1,19 @@
 const express = require('express');
 const { register, login } = require('../controllers/auth');
-
+const { protect } = require('../middleware/auth');
 const router = express.Router();
 
 router.post('/register', register);
 router.post('/login', login);
 
-
+/* 
 const bcrypt = require('bcryptjs');
 const auth = require('../middleware/auth');
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 const config = require('config');
-const { check, validationResult } = require('express-validator/check');
-
+const { check, validationResult } = require('express-validator/check'); */
+/* 
 // @route   GET /auth
 // @desc    Auth route
 // @access  Public
@@ -85,6 +85,6 @@ router.post(
             res.status(500).send('Server error');
         }
     }
-);
+); */
 
 module.exports = router;
