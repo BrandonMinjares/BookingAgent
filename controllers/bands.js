@@ -16,7 +16,7 @@ exports.getBands = asyncHandler(async (req, res, next) => {
 // @route   GET /api/v1/bands/:id
 // @access  Public
 exports.getBand = asyncHandler(async (req, res, next) => {
-        const band = await Band.findById(req.params.id);
+        const band = await Band.findById(req.user.id);
 
         // If the ID is in the correct format but the band does not exist you get custom error message
         if(!band) {
