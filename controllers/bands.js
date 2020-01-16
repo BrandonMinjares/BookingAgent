@@ -5,7 +5,7 @@ const asyncHandler = require('../middleware/async');
 
 
 // @desc    Get all bands
-// @route   GET /api/v1/bands
+// @route   GET /bands
 // @access  Public
 exports.getBands = asyncHandler(async (req, res, next) => {
         const bands = await Band.find();
@@ -13,7 +13,7 @@ exports.getBands = asyncHandler(async (req, res, next) => {
 });
 
 // @desc    Get single band
-// @route   GET /api/v1/bands/:id
+// @route   GET bands/:id
 // @access  Public
 exports.getBand = asyncHandler(async (req, res, next) => {
         const band = await Band.findById(req.user.id);
@@ -27,7 +27,7 @@ exports.getBand = asyncHandler(async (req, res, next) => {
 });
 
 // @desc    Create new band
-// @route   POST /api/v1/bands/
+// @route   POST bands/
 // @access  Private
 exports.createBand = asyncHandler(async (req, res, next) => {
         const band = await Band.create(req.body);
@@ -39,7 +39,7 @@ exports.createBand = asyncHandler(async (req, res, next) => {
 });
 
 // @desc    Update band
-// @route   PUT /api/v1/bands/:id
+// @route   PUT bands/:id
 // @access  Private
 exports.updateBand = asyncHandler(async (req, res, next) => {
         const band = await Band.findByIdAndUpdate(req.params.id, req.body, {
@@ -53,7 +53,7 @@ exports.updateBand = asyncHandler(async (req, res, next) => {
 });
 
 // @desc    Delete band
-// @route   PUT /api/v1/bands/:id
+// @route   PUT bands/:id
 // @access  Private
 exports.deleteBand = asyncHandler(async (req, res, next) => {
         const band = await Band.findByIdAndDelete(req.params.id);
@@ -65,7 +65,7 @@ exports.deleteBand = asyncHandler(async (req, res, next) => {
 
 
 // @desc    Get bands within a radius
-// @route   GET /api/v1/bands/radius/:zipcode/:distance
+// @route   GET bands/radius/:zipcode/:distance
 // @access  Private
 exports.getBandsInRadius = asyncHandler(async (req, res, next) => {
     const { zipcode, distance } = req.params;

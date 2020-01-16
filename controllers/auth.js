@@ -4,7 +4,7 @@ const asyncHandler = require('../middleware/async');
 
 
 // @desc    Register User
-// @route   POST /api/v1/auth/register
+// @route   POST /auth/register
 // @access  Public
 exports.register = asyncHandler(async(req, res, next) => {
     const { name, email, password } = req.body;
@@ -21,7 +21,7 @@ exports.register = asyncHandler(async(req, res, next) => {
 
 
 // @desc    Login User
-// @route   POST /api/v1/auth/login
+// @route   POST /auth/login
 // @access  Public
 exports.login = asyncHandler(async(req, res, next) => {
     const { email, password } = req.body;

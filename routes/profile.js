@@ -13,7 +13,7 @@ const Profile = require('../models/Profile');
 const User = require('../models/User');
 
 
-// @route   GET api/profile/me
+// @route   GET /profile/me
 // @desc    Get current users profile
 // @access  Private
 router.get('/me', auth, async (req, res) => {
@@ -36,7 +36,7 @@ router.get('/me', auth, async (req, res) => {
 
 
 
-// @route   POST api/profile
+// @route   POST /profile
 // @desc    Create or update user profile
 // @access  Private
 router.post(
@@ -111,7 +111,7 @@ router.post(
 );
 
 
-// @route   GET api/profile
+// @route   GET /profile
 // @desc    Delete profile, user & posts
 // @access  Private
 router.delete('/', auth, async (req, res) => {
@@ -133,7 +133,7 @@ router.delete('/', auth, async (req, res) => {
 
 
 
-// @route   PUT api/profile/experience
+// @route   PUT /profile/experience
 // @desc    Add profile experience
 // @access  Private
 router.put('/experience', [ auth, [

@@ -1,7 +1,7 @@
 const User = require('../models/User');
               
 // @desc    Create new user
-// @route   POST /api/v1/users/
+// @route   POST /users/
 // @access  Private
 exports.createUser = async (req, res, next) => {
     try {
@@ -16,7 +16,7 @@ exports.createUser = async (req, res, next) => {
 };
 
 // @desc    Update user
-// @route   PUT /api/v1/users/:id
+// @route   PUT /users/:id
 // @access  Private
 exports.updateUser = async (req, res, next) => {
     try {
@@ -34,7 +34,7 @@ exports.updateUser = async (req, res, next) => {
 };
 
 // @desc    Delete user
-// @route   PUT /api/v1/users/:id
+// @route   PUT /users/:id
 // @access  Private
 exports.deleteUser = async (req, res, next) => {
     try {

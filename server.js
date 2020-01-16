@@ -8,9 +8,9 @@ dotenv.config({ path: './config/config.env' })
 const connectDB = require('./config/db');
 
 // Route files
-const bands = require('./routes/api/bands');
-const user = require('./routes/api/user');
-const auth = require('./routes/api/auth');
+const bands = require('./routes/bands');
+const user = require('./routes/user');
+const auth = require('./routes/auth');
 const errorHandler = require('./middleware/error');
 
 // Conect Database
@@ -25,9 +25,9 @@ app.use(express.json());
 app.use(cookieParser());
 
 // Mount routes
-app.use('/api/v1/bands', bands);
-app.use('/api/v1/user', user);
-app.use('/api/v1/auth', auth);
+app.use('/v1/bands', bands);
+app.use('/v1/user', user);
+app.use('/v1/auth', auth);
 
 
 // Error handler must be placed after above routes because routes are
@@ -42,11 +42,11 @@ app.use('/public', express.static(path.join(__dirname, 'public')));
 app.set("view engine", "ejs");
 
 app.use('/', (req, res) => res.render('dashboard'));
-app.use('/api/users', (req, res) => res.send('home'));
+app.use('/users', (req, res) => res.send('home'));
 app.get('/signin', (req, res) => res.send('/signin'));
-app.use('/api/users', require('./routes/api/user'));
-app.use('/api/auth', require('./routes/api/auth'));
-app.use('/api/profile', require('./routes/api/profile'));
+app.use('/users', require('./routes/user'));
+app.use('/auth', require('./routes/auth'));
+app.use('/profile', require('./routes/profile'));
 
 const PORT = process.env.PORT || 5000;
 const server = app.listen(PORT, () => console.log(`Server started in ${process.env.NODE_ENV} mode on port ${PORT}`));

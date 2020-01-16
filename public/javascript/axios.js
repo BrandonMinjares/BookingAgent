@@ -11,7 +11,7 @@ const registerUser = async (name, email, password) => {
     try {
         const res = await axios({
         method:'POST',
-        url: 'http://localhost:5000/api/v1/auth/register',
+        url: 'http://localhost:5000/auth/register',
         data: {
             name,
             email,
@@ -39,7 +39,7 @@ const loginUser = async (email, password) => {
     try {
         const res = await axios({
         method:'POST',
-        url: 'http://localhost:5000/api/v1/auth/login',
+        url: 'http://localhost:5000/auth/login',
         data: {
             email,
             password
