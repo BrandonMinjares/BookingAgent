@@ -37,7 +37,6 @@ app.use('/v1/auth', auth);
 // used in a linear order, therefore error handler needs to catch error from routes above
 app.use(errorHandler);
 
-const path = require('path');
 app.use(bodyParser.urlencoded({ extended: true })); 
 
 app.use('/public', express.static(path.join(__dirname, 'public')));
