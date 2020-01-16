@@ -1,19 +1,17 @@
 const User = require('../models/User');
-              
+const ErrorResponse = require('../utils/errorResponse');    
+const asyncHandler = require('../middleware/async');
+
 // @desc    Create new user
 // @route   POST /users/
 // @access  Private
-exports.createUser = async (req, res, next) => {
-    try {
+exports.createUser = asyncHandler(async (req, res, next) => {
         const user = await User.create(req.body);
         res.status(201).json({
             success: true,
             data: user
         });
-    } catch(err) {
-        res.status(400).json({ success: false })
-    }
-};
+});
 
 // @desc    Update user
 // @route   PUT /users/:id
