@@ -36,9 +36,9 @@ if (process.env.NODE_ENV === 'development') {
 app.use('/public', express.static(path.join(__dirname, 'public')));
 
 // Mount routes
-app.use('api/v1/bands', bands);
-app.use('api/v1/auth', auth);
-app.use('api/v1/user', user);
+app.use('/bands', bands);
+app.use('/auth', auth);
+app.use('/user', user);
 
 
 // Error handler must be placed after above routes because routes are
