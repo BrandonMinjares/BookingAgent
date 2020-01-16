@@ -17,7 +17,7 @@ const {
 router
     .route('/')
     .get(getBands)
-    .post(protect, createBand);
+    .post(createBand);
 
 router
     .route('/:id')
