@@ -1,7 +1,10 @@
+const path = require('path');
 const express = require('express');
 const dotenv = require('dotenv');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+
+
 // Load env vars
 dotenv.config({ path: './config/config.env' })
 
