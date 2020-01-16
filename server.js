@@ -28,9 +28,9 @@ app.use(express.json());
 app.use(cookieParser());
 
 // Mount routes
-app.use('/v1/bands', bands);
-app.use('/v1/user', user);
-app.use('/v1/auth', auth);
+app.use('api/v1/bands', bands);
+app.use('api/v1/user', user);
+app.use('api/v1/auth', auth);
 
 
 // Error handler must be placed after above routes because routes are
