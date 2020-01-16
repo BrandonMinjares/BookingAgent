@@ -2,15 +2,15 @@ const express = require('express');
 const router = express.Router();
 const request = require('request');
 const config = require('config');
-const auth = require('../../middleware/auth');
+const auth = require('../middleware/auth');
 
 // allows you to use the check function for middleware
 const { check, validationResult } = require('express-validator/check');
 
 
 // Schema   å
-const Profile = require('../../models/Profile');
-const User = require('../../models/User');
+const Profile = require('../models/Profile');
+const User = require('../models/User');
 
 
 // @route   GET api/profile/me

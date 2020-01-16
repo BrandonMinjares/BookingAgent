@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
- const { protect }  = require('../../middleware/auth');
+ const { protect }  = require('../middleware/auth');
 
 const { 
     getBands,
@@ -9,7 +9,7 @@ const {
     updateBand,
     deleteBand,
     getBandsInRadius
- } = require('../../controllers/bands');
+ } = require('../controllers/bands');
 
  router.route('/radius/:zipcode/:distance').get(getBandsInRadius);
 
@@ -17,7 +17,7 @@ const {
 router
     .route('/')
     .get(getBands)
-    .post(createBand);
+    .post(protect, createBand);
 
 router
     .route('/:id')

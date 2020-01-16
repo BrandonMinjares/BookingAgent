@@ -1,5 +1,5 @@
 const express = require('express');
-const { register, login } = require('../../controllers/auth');
+const { register, login } = require('../controllers/auth');
 
 const router = express.Router();
 
@@ -8,8 +8,8 @@ router.post('/login', login);
 
 
 const bcrypt = require('bcryptjs');
-const auth = require('../../middleware/auth');
-const User = require('../../models/User');
+const auth = require('../middleware/auth');
+const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 const config = require('config');
 const { check, validationResult } = require('express-validator/check');
