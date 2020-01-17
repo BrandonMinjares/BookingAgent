@@ -56,6 +56,8 @@ app.set("view engine", "ejs");
 app.get('/', (req, res) => res.render('index'));
 app.get('/login', (req, res) => res.render('login'));
 app.get('/register', (req, res) => res.render('register'));
+app.get('/contact', (req, res) => res.render('contact'));
+
 //app.get('/dashboard', (req, res) => res.render('dashboard'));
 
 const PORT = process.env.PORT || 5000;
