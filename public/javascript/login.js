@@ -1,16 +1,13 @@
-// Login FORM
-
-
 const loginForm = document.querySelector('.loginForm');
-
-loginForm.addEventListener('submit', e => {
-    e.preventDefault();
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-    //loginUser(email, password);
-    alert(email + password);
-}); 
-
+    if(loginForm) {
+        addEventListener('submit', e => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            loginUser(email, password);
+            alert(email + password);
+        }); 
+}
 
 const loginUser = async (email, password) => {
     try {
@@ -22,43 +19,8 @@ const loginUser = async (email, password) => {
             password
         }
     });
-
-
-    if(res.data.status === 'success') {
-        alert('logged in successfully');
-        window.setTimeout(() => {
-            location.assign('/dashboard');
-        }, 1500);
-    }
-    } catch (err) {
+}
+    catch (err) {
         alert(err.response.data.message);
     }
 };
-
-
-/*
-
-const loginForm = document.querySelector('.loginForm').addEventListener('submit', e => {
-    e.preventDefault();
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-    login(email, password);
-    alert(email + password);
-}); 
-
-
-const login = async (email, password) => {
-    try {
-        const res = await axios({
-        method:'POST',
-        url: 'http://localhost:5000/auth/login',
-        data: {
-            email,
-            password
-        }
-    });
-} catch(err) {
-    console.log(err);
-}};
-
-*/
