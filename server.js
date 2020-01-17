@@ -54,6 +54,9 @@ app.set("view engine", "ejs");
 // App.get gets the pathway that is added
 // Renders a view and sends the rendered HTML string to the client
 app.get('/', (req, res) => res.render('index'));
+app.get('/login', (req, res) => res.render('login'));
+app.get('/register', (req, res) => res.render('register'));
+
 //app.get('/dashboard', (req, res) => res.render('dashboard'));
 
 const PORT = process.env.PORT || 5000;
