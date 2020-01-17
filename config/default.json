@@ -1,4 +1,0 @@
-{
-    "mongoURI": "mongodb+srv://brandon:EatTheFrog10!@prog-vfsny.mongodb.net/test?retryWrites=true&w=majority",
-    "jwtSecret": "mysecrettoken"
-}
