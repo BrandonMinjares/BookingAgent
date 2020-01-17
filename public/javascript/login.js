@@ -5,11 +5,11 @@ loginForm.addEventListener('submit', e => {
     e.preventDefault();
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
-    loginUser(email, password);
+    //loginUser(email, password);
     alert(email + password);
 });
 
-
+/*
 const loginUser = async (email, password) => {
     try {
         const res = await axios({
@@ -21,7 +21,6 @@ const loginUser = async (email, password) => {
         }
     });
 
-    /*
 
     if(res.data.status === 'success') {
         alert('logged in successfully');
@@ -29,8 +28,9 @@ const loginUser = async (email, password) => {
             location.assign('/dashboard');
         }, 1500);
     }
-    */
     } catch (err) {
         alert(err.response.data.message);
     }
 };
+
+*/

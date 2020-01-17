@@ -1,12 +1,17 @@
 const registerForm = document.querySelector('.registerForm');
 
 registerForm.addEventListener('submit', e => {
+    e.preventDefault();
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
-    registerUser(name, email, password);
+    
+    alert(name+email+password);
+    //registerUser(name, email, password);
 });
 
+
+/*
 const registerUser = async (name, email, password) => {
     try {
         const res = await axios({
@@ -23,3 +28,5 @@ const registerUser = async (name, email, password) => {
         console.log(err);
     }
 };
+
+*/
