@@ -28,7 +28,6 @@ const registerUser = async (name, email, password) => {
 const loginForm = document.querySelector('.loginForm');
 
 loginForm.addEventListener('submit', e => {
-    e.preventDefault();
     const email = document.getElementById('email2').value;
     const password = document.getElementById('password2').value;
     loginUser(email, password);
