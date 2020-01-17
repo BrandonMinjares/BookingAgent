@@ -6,6 +6,7 @@ loginForm.addEventListener('submit', e => {
     const email = document.getElementById('email2').value;
     const password = document.getElementById('password2').value;
     loginUser(email, password);
+    alert(email + password);
 });
 
 
