@@ -50,6 +50,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.set("view engine", "ejs");
 
+
+// App.get gets the pathway that is added
+// Renders a view and sends the rendered HTML string to the client
 app.get('/', (req, res) => res.render('home'));
 app.get('/dashboard', (req, res) => res.render('dashboard'));
 
