@@ -1,5 +1,6 @@
 const User = require('../models/User');
 const ErrorResponse = require('../utils/errorResponse');    
+const sendEmail = require('./../utils/email');
 const asyncHandler = require('../middleware/async');
 
 // @desc    Create new user
