@@ -51,6 +51,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 
 app.get('/', (req, res) => res.render('index'));
+app.post('/', (req, res) => res.render('dashboard'));
+
 app.get('/dashboard', (req, res) => res.render('dashboard'));
 
 const PORT = process.env.PORT || 5000;
