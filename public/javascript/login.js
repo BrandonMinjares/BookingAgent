@@ -3,8 +3,8 @@ const loginForm = document.querySelector('.loginForm');
 
 loginForm.addEventListener('submit', e => {
     e.preventDefault();
-    const email = document.getElementById('email2').value;
-    const password = document.getElementById('password2').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
     loginUser(email, password);
     alert(email + password);
 });
