@@ -1,4 +1,6 @@
 // Login FORM
+
+
 const loginForm = document.querySelector('.loginForm');
 
 loginForm.addEventListener('submit', e => {
@@ -7,9 +9,9 @@ loginForm.addEventListener('submit', e => {
     const password = document.getElementById('password').value;
     //loginUser(email, password);
     alert(email + password);
-});
+}); 
 
-/*
+
 const loginUser = async (email, password) => {
     try {
         const res = await axios({
@@ -32,5 +34,31 @@ const loginUser = async (email, password) => {
         alert(err.response.data.message);
     }
 };
+
+
+/*
+
+const loginForm = document.querySelector('.loginForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    login(email, password);
+    alert(email + password);
+}); 
+
+
+const login = async (email, password) => {
+    try {
+        const res = await axios({
+        method:'POST',
+        url: 'http://localhost:5000/auth/login',
+        data: {
+            email,
+            password
+        }
+    });
+} catch(err) {
+    console.log(err);
+}};
 
 */
