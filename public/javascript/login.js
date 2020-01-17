@@ -20,8 +20,17 @@ const loginUser = async (email, password) => {
             password
         }
     });
-        console.log(res);
+    /*
+    console.log('text');
+    if(res.data.status === 'success') {
+        alert('logged in successfully');
+        window.setTimeout(() => {
+            location.assign('/dashboard');
+        }, 1500);
+    }
+    */
+
     } catch (err) {
-        console.log(err);
+        alert(err.response.data.message);
     }
 };
