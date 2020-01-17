@@ -1,9 +1,9 @@
 const registerForm = document.querySelector('.registerForm');
 
 registerForm.addEventListener('submit', e => {
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
+    const name = document.getElementById('name2').value;
+    const email = document.getElementById('email2').value;
+    const password = document.getElementById('password2').value;
     registerUser(name, email, password);
 });
 
