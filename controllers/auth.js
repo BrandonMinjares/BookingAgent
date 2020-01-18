@@ -74,6 +74,19 @@ const sendTokenResponse = (user, statusCode, res) => {
 };
 
 
+// @desc    Get current logged in User
+// @route   POST /auth/me
+// @access  Private
+exports.getMe = asyncHandler(async (req, res, next) => {
+    const user = await User.findById(req.user.id);
+
+    res.status(200).json({
+        success: true,
+        data: user
+    });
+});
+
+
 exports.forgetPassword = (req, res, next) => {
     
 };
