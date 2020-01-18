@@ -22,7 +22,7 @@ router
 router
     .route('/:id')
     .get(getBand)
-    .put(updateBand)
-    .delete(deleteBand);
+    .put(protect, updateBand)
+    .delete(protect, deleteBand);
 
 module.exports = router;
