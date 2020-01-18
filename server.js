@@ -58,6 +58,8 @@ app.get('/login', (req, res) => res.render('login'));
 app.get('/register', (req, res) => res.render('register'));
 app.get('/contact', (req, res) => res.render('contact'));
 
+
+//app.post('/auth/register', (req, res) => );
 //app.get('/dashboard', (req, res) => res.render('dashboard'));
 
 const PORT = process.env.PORT || 5000;
