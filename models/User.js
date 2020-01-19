@@ -24,6 +24,11 @@ const UserSchema = new mongoose.Schema({
         // select: false makes it so that the password wont show up in any output
         select: false
     },
+    role: {
+        type: String,
+        enum: ['user', 'paidUser'],
+        default: 'user'
+    },
     resetPasswordToken: String,
     resetPasswordExpire: Date,
     createdAt: {
