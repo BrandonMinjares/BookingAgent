@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
- const { protect }  = require('../middleware/auth');
+ const { protect, authorize }  = require('../middleware/auth');
 
 const { 
     getBands,
@@ -17,12 +17,12 @@ const {
 router
     .route('/')
     .get(getBands)
-    .post(protect, createBand);
+    .post(protect, authorize('paidUser'), createBand);
 
 router
     .route('/:id')
     .get(getBand)
-    .put(protect, updateBand)
-    .delete(protect, deleteBand);
+    .put(protect, authorize('paidUser'), updateBand)
+    .delete(protect, authorize('paidUser'), deleteBand);
 
 module.exports = router;
