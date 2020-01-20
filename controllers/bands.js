@@ -59,7 +59,7 @@ exports.updateBand = asyncHandler(async (req, res, next) => {
     } 
 
     // Make sure user is band owner
-    if(band.user.toString() != req.user.id && req.user.role != 'admin') {
+    if(band.user.toString() !== req.user.id && req.user.role != 'admin') {
         return next(
             new ErrorResponse(`User ${req.params.id} is not allowed to access this route`, 401)
         );
