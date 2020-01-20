@@ -3,18 +3,12 @@ const slugify = require('slugify');
 const geocoder = require('../utils/geocoder');
 
 const BandsSchema = new mongoose.Schema({
-    user: {
-        // connects to an id that represents the user model
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
-        required: true
-    },
     name: {
         type: String,
         required: [true, 'Please add a name'],
         unique: true,
-        trim: false,
-        maxlength: [30, 'Name can not be more than 30 charachters']
+        trim: true,
+        maxlength: [50, 'Name can not be more than 30 charachters']
     },
     slug: String,
     description: {
@@ -82,6 +76,12 @@ const BandsSchema = new mongoose.Schema({
     createdAt: {
         type: Date,
         default: Date.now
+    },
+    user: {
+        // connects to an id that represents the user model
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
     }
 });
 

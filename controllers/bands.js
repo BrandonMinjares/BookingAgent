@@ -52,14 +52,26 @@ exports.createBand = asyncHandler(async (req, res, next) => {
 // @route   PUT bands/:id
 // @access  Private
 exports.updateBand = asyncHandler(async (req, res, next) => {
-        const band = await Band.findByIdAndUpdate(req.params.id, req.body, {
-            new: true,
-            runValidators: true
-        });
-        if(!band) {
-            return next(new ErrorResponse(`Band not found with id of ${req.params.id}`, 404));
-        } 
-        res.status(200).json({ success: true, data: band })
+    let band = await Band.findById(req.params.id);
+
+    if(!band) {
+        return next(new ErrorResponse(`Band not found with id of ${req.params.id}`, 404));
+    } 
+
+    // Make sure user is band owner
+    if(band.user.toString() != res.user.id && req.user.role != 'admin') {
+        return next(
+            new ErrorResponse(`User ${req.params.id} is not allowed to access this route`, 401)
+        );
+    }
+
+    band = await Band.findOneAndUpdate(req.params.id, req.body, {
+        new: true,
+        runValidators: true
+    });
+
+
+    res.status(200).json({ success: true, data: band })
 });
 
 // @desc    Delete band
