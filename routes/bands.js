@@ -17,12 +17,12 @@ const {
 router
     .route('/')
     .get(getBands)
-    .post(protect, authorize('paidUser'), createBand);
+    .post(protect, authorize('user', 'paidUser', 'admin'), createBand);
 
 router
     .route('/:id')
     .get(getBand)
-    .put(protect, authorize('paidUser'), updateBand)
-    .delete(protect, authorize('paidUser'), deleteBand);
+    .put(protect, authorize('user', 'paidUser', 'admin'), updateBand)
+    .delete(protect, authorize('user', 'paidUser', 'admin'), deleteBand);
 
 module.exports = router;
