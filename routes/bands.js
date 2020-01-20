@@ -11,6 +11,8 @@ const {
     getBandsInRadius
  } = require('../controllers/bands');
 
+const Band = require('../models/Bands');
+
  router.route('/radius/:zipcode/:distance').get(getBandsInRadius);
 
  // Connects specific methods in Bands controller with a specific HTTP Request 
