@@ -30,19 +30,22 @@ exports.getBand = asyncHandler(async (req, res, next) => {
 // @route   POST bands/
 // @access  Private
 exports.createBand = asyncHandler(async (req, res, next) => {
-        req.body.user = req.user.id;
-        const publishedBand = await Band.findOne({ user: req.user.id });
+    // Add user to req.body
+    req.body.user = req.user.id;
 
-        if(publishedBand) {
-            return next(new ErrorResponse('The user has already published this band', 400));
-        }
+    // Checks if a band has already been created
+    const publishedBand = await Band.findOne({ user: req.user.id });
 
-        const band = await Band.create(req.body);
+    if(publishedBand) {
+        return next(new ErrorResponse('The user has already published this band', 400));
+    }
+
+    const band = await Band.create(req.body);
     
-        res.status(201).json({
-            success: true,
-            data: band
-        }); 
+    res.status(201).json({
+        success: true,
+        data: band
+    }); 
 });
 
 // @desc    Update band

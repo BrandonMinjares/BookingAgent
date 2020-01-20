@@ -6,7 +6,8 @@ const BandsSchema = new mongoose.Schema({
     user: {
         // connects to an id that represents the user model
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'user'
+        ref: 'User',
+        required: true
     },
     name: {
         type: String,
