@@ -4,15 +4,15 @@ const userRequest = document.querySelector('.userRequest');
             e.preventDefault();
             const band = document.getElementById('band').value;
             alert(band);
-            //userRequest(band);
+            findBand(band);
         }); 
 }
-/*
+
 const findBand = async (band) => {
     try {
         const res = await axios({
-        method:'POST',
-        url: 'http://localhost:5000/auth/register',
+        method:'GET',
+        url: 'http://localhost:5000/auth/requestband',
         data: {
             band
         }
@@ -28,4 +28,3 @@ const findBand = async (band) => {
         alert(err.response.data.message);
     }
 };
-*/
