@@ -20,7 +20,9 @@ const registerUser = async (name, email, password) => {
         }
     });
 
+    res.redirect('/');
     if (res.data.status === 'success') {
+        res.redirect('/')
         alert('Registered success');
         window.setTimeout(() => {
             location.assign('/');
