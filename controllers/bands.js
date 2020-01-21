@@ -9,7 +9,7 @@ const asyncHandler = require('../middleware/async');
 // @access  Public
 exports.getBands = asyncHandler(async (req, res, next) => {
         const bands = await Band.find();
-        res.status(200).json({ success: true, count: bands.length, data: bands});
+        return res.status(200).json({ success: true, count: bands.length, data: bands });
 });
 
 // @desc    Get single band

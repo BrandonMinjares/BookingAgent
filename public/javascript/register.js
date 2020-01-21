@@ -20,9 +20,9 @@ const registerUser = async (name, email, password) => {
         }
     });
 
-    res.redirect('/');
+    //res.redirect('/');
     if (res.data.status === 'success') {
-        res.redirect('/')
+        window.location.href = '/login';
     }
 } catch (err) {
         alert(err.response.data.message);
