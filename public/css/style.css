@@ -21,7 +21,7 @@
   }
 
   header {
-    background-image: url(/public/img/fabian-mardi-kVKz9qnJC-k-unsplash.jpg);
+    background-color: wheat;
     background-size: cover;
     background-position: center;
     height: 100vh;
@@ -29,7 +29,6 @@
 
   .hero-text-box {
     position: absolute;
-    width: 1140px;
     top: 50%;
     left: 50%;
   }

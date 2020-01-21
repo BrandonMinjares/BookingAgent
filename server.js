@@ -58,6 +58,7 @@ app.set("view engine", "ejs");
 // App.get gets the pathway that is added
 // Renders a view and sends the rendered HTML string to the client
 app.get('/', (req, res) => res.render('home'));
+app.get('/bands', (req, res) => res.render('bands', {friends: friends}));
 app.get('/home', (req, res) => res.render('home'));
 
 app.get('/login', (req, res) => res.render('login'));

@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "SET NODE_ENV=production node server",
-    "dev": "nodemon server"
+    "dev": "nodemon server",
+    "client": "npm start --prefix client"
   },
   "author": "Brandon Minjares",
   "license": "ISC",
