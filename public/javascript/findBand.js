@@ -4,7 +4,7 @@ const userRequest = document.querySelector('.userRequest');
             e.preventDefault();
             const band = document.getElementById('band').value;
             alert(band);
-            findBand(band);
+            //findBand(band);
         }); 
 }
 
