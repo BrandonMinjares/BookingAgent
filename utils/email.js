@@ -4,8 +4,7 @@ const nodemailer = require('nodemailer');
 // Currently using Mailtrap, in production we will probably use MailGun
 // don't use gmail because of "less secure", especially in production and email per day limit
 
-const sendEmail = async options => {
-    // 1) Create a transport
+const sendEmail = async (options) => {
     const transporter = nodemailer.createTransport({
         host: process.env.EMAIL_HOST,
         port: process.env.EMAIL_PORT,
@@ -15,16 +14,16 @@ const sendEmail = async options => {
         }
     });
 
-    // 2) Define the email options
     const mailOptions = {
-        from: 'Brandon Minjares',
+        from: `${process.env.FROM_NAME} <${process.env.FROM_EMAIL}>`,
         to: options.email,
         subject: options.subject,
         text: options.message,
-        //html:
     };
-    // 3) Actually send the email with Nodemailer
-    await transporter.sendMail(mailOptions);
+
+    const info = await transporter.sendMail(mailOptions);
+
+    console.log('Message sent: %s', info.messageId);
 };
 
 module.exports = sendEmail;
