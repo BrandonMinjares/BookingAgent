@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const connectDB = require('./config/db');
+const mongoSanitize = require('express-mongo-sanitize');
 const errorHandler = require('./middleware/error');
 const morgan = require('morgan');
 
@@ -32,6 +33,9 @@ app.use(cookieParser());
 if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'));
 }
+
+// Sanitize data
+app.use(mongoSanitize());
 
 app.use('/public', express.static(path.join(__dirname, 'public')));
 
