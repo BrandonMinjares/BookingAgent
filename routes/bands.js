@@ -8,7 +8,8 @@ const {
     createBand,
     updateBand,
     deleteBand,
-    getBandsInRadius
+    getBandsInRadius,
+    bandPhotoUpload
  } = require('../controllers/bands');
 
 const Band = require('../models/Bands');
@@ -24,7 +25,11 @@ router
 router
     .route('/:id')
     .get(getBand)
-    .put(protect, authorize('user', 'paidUser', 'admin'), updateBand)
+    .put(protect,  updateBand)
     .delete(protect, authorize('user', 'paidUser', 'admin'), deleteBand);
+
+router
+    .route('/:id/photo')
+    .put(bandPhotoUpload);
 
 module.exports = router;

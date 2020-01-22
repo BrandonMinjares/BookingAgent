@@ -95,6 +95,8 @@ exports.deleteBand = asyncHandler(async (req, res, next) => {
         if(!band) {
             return next(new ErrorResponse(`Band not found with id of ${req.params.id}`, 404));
         } 
+
+        band.remove();
         res.status(200).json({ success: true, data: {} })
 });
 
@@ -125,4 +127,22 @@ exports.getBandsInRadius = asyncHandler(async (req, res, next) => {
         count: bands.length,
         data: bands
     });
+});
+
+
+// @desc    Upload photo
+// @route   PUT bands/:id/photo
+// @access  Private
+exports.bandPhotoUpload = asyncHandler(async (req, res, next) => {
+    const band = await Band.findById(req.params.id);
+    if(!band) {
+        return next(new ErrorResponse(`Band not found with id of ${req.params.id}`, 404));
+    } 
+
+    if(!req.files) {
+        return next(new ErrorResponse('Please upload a file', 400));
+
+    }
+
+    res.status(200).json({ success: true, data: {} })
 });
