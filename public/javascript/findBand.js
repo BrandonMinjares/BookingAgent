@@ -8,6 +8,7 @@ const userRequest = document.querySelector('.userRequest');
         }); 
 }
 
+/*
 const findBand = async (band) => {
     try {
         const res = await axios({
@@ -28,3 +29,5 @@ const findBand = async (band) => {
         alert(err.response.data.message);
     }
 };
+
+*/
