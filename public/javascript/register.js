@@ -20,10 +20,6 @@ const registerUser = async (name, email, password) => {
         }
     });
 
-    //res.redirect('/');
-    if (res.data.status === 'success') {
-        window.location.href = '/login';
-    }
 } catch (err) {
         alert(err.response.data.message);
     }

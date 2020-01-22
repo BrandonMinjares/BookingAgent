@@ -1,10 +1,6 @@
-const bandInfo = document.querySelector('.bandInfo');
-    if(bandInfo) {
-        addEventListener('click', e => {
-            e.preventDefault();
-            alert('yo');
-        }); 
-}
+document.querySelector('.bandInfo').addEventListener("onclick", function() {
+    alert('ehy');
+});
 
 /*
 const registerUser = async (name, email, password) => {
