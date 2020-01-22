@@ -3,15 +3,11 @@
 <div class = "container-fluid">
     <div class ="row">
         <div class="col">
-            <table>
-                <% for(let i=0; i < bands.length; i++) { %>
-                   <tr>
-                     <td><%- bands[i].genre %></td>
-                     <td><%- bands[i].name %></td>
-                     <td><%- bands[i].description %></td>
-                   </tr>
-                <% } %>
-            </table>
+            <% bands.forEach(function(band) { %>
+                <div>
+                <h4><%= band.name %></h4>
+                </div>
+            <% }); %>
         </div>
     </div>
 </div>
