@@ -1,5 +1,7 @@
 <% include partials/header %>
 
+<% for(var i=0; i < bands.length; i++) { %>
+<%- bands[i].name %>
+<% } %>
 
-<%- bands[0].name %>
 <% include partials/footer %>
