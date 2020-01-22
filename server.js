@@ -64,10 +64,8 @@ app.get('/register', (req, res) => res.render('register'));
 app.get('/contact', (req, res) => res.render('contact'));
 app.post('/register', (req, res) => res.redirect('/'));
 
-app.get('/bands', function(req,res) {
-    let name = req.params[0];
-    console.log('hame');
-});
+
+//app.get('/bands', (req,res) => res.render('/bands'));
 //app.post('/auth/register', (req, res) => );
 //app.get('/dashboard', (req, res) => res.render('dashboard'));
 

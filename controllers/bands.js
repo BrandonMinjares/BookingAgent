@@ -8,8 +8,21 @@ const asyncHandler = require('../middleware/async');
 // @route   GET /bands
 // @access  Public
 exports.getBands = asyncHandler(async (req, res, next) => {
-        const bands = await Band.find();
-        return res.status(200).json({ success: true, count: bands.length, data: bands });
+    /*let query;
+    if (req.params.bandId) {
+        query = Band.find({ band: req.params.bandId });
+    } else {
+        query = Band.find().populate({
+            path: 'bands',
+            select: 'name description'
+        });
+    }*/
+
+    const bands = await Band.find();
+    const test = JSON.stringify(bands);
+    return res.render('bands', {test, bands});
+
+   // return res.status(200).json({ success: true, count: bands.length, data: bands });
 });
 
 // @desc    Get single band

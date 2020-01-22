@@ -83,6 +83,9 @@ const BandsSchema = new mongoose.Schema({
         ref: 'User',
         required: true
     }
+}, {
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true  }
 });
 
 // Create bootcamp slug from the name
@@ -110,5 +113,12 @@ BandsSchema.pre('save', async function(next) {
     next();
 });
 
+// Reverse populate with virtuals
+BandsSchema.virtual('bands', {
+    ref: 'Bands',
+    localField: '_id',
+    foreignField: 'band',
+    justOne: false
+});
 
 module.exports = mongoose.model('Bands', BandsSchema);
