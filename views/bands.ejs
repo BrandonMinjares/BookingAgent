@@ -1,7 +1,18 @@
 <% include partials/header %>
 
-<% for(var i=0; i < bands.length; i++) { %>
-<%- bands[i].name %>
-<% } %>
+
+
+
+<table>
+    <% for(var i=0; i < bands.length; i++) { %>
+       <tr>
+         <td><%- bands[i].genre %></td>
+         <td><%- bands[i].name %></td>
+         <td><%- bands[i].description %></td>
+       </tr>
+    <% } %>
+</table>
+
+
 
 <% include partials/footer %>
