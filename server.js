@@ -63,6 +63,7 @@ app.get('/login', (req, res) => res.render('login'));
 app.get('/register', (req, res) => res.render('register'));
 app.get('/contact', (req, res) => res.render('contact'));
 app.post('/register', (req, res) => res.redirect('/'));
+app.get('/profile', (req, res) => res.render('profile'));
 
 
 //app.get('/bands', (req,res) => res.render('/bands'));
