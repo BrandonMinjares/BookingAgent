@@ -1,0 +1,2 @@
+I think we need to send the user token from the headers to the next page, and every subsequent page until
+the user clicks logout.
