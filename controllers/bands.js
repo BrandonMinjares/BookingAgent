@@ -30,16 +30,16 @@ exports.getBands = asyncHandler(async (req, res, next) => {
 // @access  Public
 exports.getBand = asyncHandler(async (req, res, next) => {
         
-    const band = await Band.findById(req.params.id);
+    const bands = await Band.findById(req.params.id);
 
     //const band = await Band.findById(req.user.id);
         // If the ID is in the correct format but the band does not exist you get custom error message
-        if(!band) {
+        if(!bands) {
             return next(new ErrorResponse(`Band not found with id of ${req.params.id}`, 404));
         } 
-    const test = JSON.stringify(band);
-    //return res.render('band', {test, band});
-    return res.status(200).json({ success: true, data: band});
+    const test = JSON.stringify(bands);
+    return res.render('show', {test, bands});
+    //return res.status(200).json({ success: true, data: test});
 });
 
 // @desc    Create new band
