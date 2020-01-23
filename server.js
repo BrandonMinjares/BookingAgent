@@ -64,7 +64,7 @@ app.get('/register', (req, res) => res.render('register'));
 app.get('/contact', (req, res) => res.render('contact'));
 app.post('/register', (req, res) => res.redirect('/'));
 app.get('/profile', (req, res) => res.render('profile'));
-
+app.get('/bandregister', (req, res) => res.render('bandregister'));
 
 //app.get('/bands', (req,res) => res.render('/bands'));
 //app.post('/auth/register', (req, res) => );
