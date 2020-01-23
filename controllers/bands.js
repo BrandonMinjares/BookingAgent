@@ -1,3 +1,4 @@
+const path = require('path');
 const ErrorResponse = require('../utils/errorResponse');
 const Band = require('../models/Bands');
 const geocoder = require('../utils/geocoder');
@@ -147,5 +148,29 @@ exports.bandPhotoUpload = asyncHandler(async (req, res, next) => {
 
     }
 
-    res.status(200).json({ success: true, data: {} })
+    const file = req.files.file;
+
+    // Make sure the image is a photo
+    if(!file.mimetype.startsWith('image')) {
+        return next(new ErrorResponse('Please upload an image file', 400));
+    }
+
+    // Check filesize
+    if(file.size > process.env.MAX_FILE_UPLOAD) {
+        return next(new ErrorResponse(`Please upload an image size less than ${process.env.MAX_FILE_UPLOAD}`, 400));
+    }
+
+    // Create custom file name
+    file.name = `photo_${band._id}${path.parse(file.name).ext}`;
+
+    file.mv(`${process.env.FILE_UPLOAD_PATH}/${file.name}`, async err => {
+        if(err) {
+            console.log(err);
+            return next(new ErrorResponse(`Problem with file upload`, 500));
+        }
+
+        await Band.findByIdAndUpdate(req.params.id, { photo: file.name });
+    });
+
+    res.status(200).json({ success: true, data: file.name })
 });

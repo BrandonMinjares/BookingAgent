@@ -6,6 +6,8 @@
             <% bands.forEach(function(band) { %>
                 <div>
                 <h4><%= band.name %></h4>
+                <h4><%= band.photo %></h4>
+                <img src="/public/uploads/<%=band.photo %>">
                 <p>
                     <a href="/bands/<%= band._id %>" class="btn btn-primary">More Info</a>
                 </p>

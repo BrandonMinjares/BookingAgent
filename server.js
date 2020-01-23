@@ -22,8 +22,6 @@ const auth = require('./routes/auth');
 
 const app = express();
 
-
-
 // Body parser
 app.use(express.json());
 
@@ -33,10 +31,14 @@ app.use(cookieParser());
 if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'));
 }
+// File uploading
 app.use(fileupload());
+
+
 // Sanitize data
 app.use(mongoSanitize());
 
+// Set static folder
 app.use('/public', express.static(path.join(__dirname, 'public')));
 
 // Mount routes
