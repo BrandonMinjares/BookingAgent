@@ -71,7 +71,8 @@ const BandsSchema = new mongoose.Schema({
     },
     averageCost: Number,
     photo: {
-        type: String
+        type: String,
+        default: 'no-photo.jpg'
     },
     createdAt: {
         type: Date,
