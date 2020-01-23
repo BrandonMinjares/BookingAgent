@@ -1,5 +1,21 @@
 <% include partials/header %>
 
-in register band
+<div class = "container-fluid">
+    <div class ="row">
+        <div class="col">
+            <h2>Register Band</h2>
+
+            <form method="POST" class="registerBand">
+                <input type="text" name="name" id="name" placeholder="Name"><br>
+                <input type="text" name="description" id="description" placeholder="description"><br>
+                <input type="text" name="website" id="website" placeholder="website"><br>
+                <input type="number" name="number" id="number" placeholder="phone number">
+                <input type="text" name="genre" id="genre" placeholder="Genre - Tribute or Original">
+                <input type="file" name="bandPhoto" placeholder="Upload Photo">
+                <input type="submit" name="submit" value="submit">
+            </form>
+        </div>
+    </div>
+</div>
 
 <% include partials/footer %>
