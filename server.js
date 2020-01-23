@@ -8,6 +8,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 const errorHandler = require('./middleware/error');
 const morgan = require('morgan');
 const fileupload = require('express-fileupload');
+const expresslayouts = require('express-ejs-layouts');
 
 // Load env vars
 dotenv.config({ path: './config/config.env' })
@@ -53,7 +54,8 @@ app.use(errorHandler);
 
 app.use(bodyParser.urlencoded({ extended: true })); 
 
-
+// EJS
+app.use(expresslayouts);
 app.set("view engine", "ejs");
 
 
