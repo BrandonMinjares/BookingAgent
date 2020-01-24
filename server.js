@@ -9,7 +9,7 @@ const errorHandler = require('./middleware/error');
 const morgan = require('morgan');
 const fileupload = require('express-fileupload');
 const expressLayouts = require('express-ejs-layouts');
-const session = require('express-session')
+const session = require('express-session');
 const flash = require('connect-flash');
 
 // Load env vars
@@ -84,6 +84,7 @@ app.get('/contact', (req, res) => res.render('contact'));
 
 
 app.post('/register', (req, res) => {
+    const { name, email, password, password2 } = req.body;
     console.log(req.body);
     const info = req.body;
     res.render('dashboard', {info});
