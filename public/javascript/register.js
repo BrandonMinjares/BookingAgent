@@ -18,6 +18,7 @@ const registerUser = async (name, email, password) => {
             email,
             password
         }
+
     });
 
 } catch (err) {

@@ -50,7 +50,13 @@ exports.login = asyncHandler(async(req, res, next) => {
     // Important to make !user and !isMatch function return same message to ensure that the
     // person who entered the information isn't sure whether the error was an incorrect email
     // or an incorrect password -- Extra Security
+
     sendTokenResponse(user, 200, res);
+    
+    //const test = JSON.stringify(user);
+    console.log(user);
+    return res.render('dashboard', {user});
+
 });
 
 

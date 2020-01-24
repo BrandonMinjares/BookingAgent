@@ -55,7 +55,7 @@ app.use(errorHandler);
 app.use(bodyParser.urlencoded({ extended: true })); 
 
 // EJS
-app.use(expresslayouts);
+//app.use(expresslayouts);
 app.set("view engine", "ejs");
 
 
@@ -64,13 +64,14 @@ app.set("view engine", "ejs");
 app.get('/', (req, res) => res.render('home'));
 app.get('/home', (req, res) => res.render('home'));
 app.get('/login', (req, res) => res.render('login'));
+app.post('/login', (req, res) => res.redirect('dashboard'));
 app.get('/register', (req, res) => res.render('register'));
 app.get('/contact', (req, res) => res.render('contact'));
-app.post('/register', (req, res) => res.redirect('/'));
+app.post('/register', (req, res) => res.redirect('dashboard'));
 app.get('/profile', (req, res) => res.render('profile'));
 app.get('/bandregister', (req, res) => res.render('bandregister'));
 app.post('/bandregister', (req, res) => res.redirect('/'));
-
+app.get('/dashboard', (req, res) => res.render('dashboard'));
 //app.get('/bands', (req,res) => res.render('/bands'));
 //app.post('/auth/register', (req, res) => );
 //app.get('/dashboard', (req, res) => res.render('dashboard'));

@@ -20,8 +20,7 @@ exports.getBands = asyncHandler(async (req, res, next) => {
     }*/
 
     const bands = await Band.find();
-    const test = JSON.stringify(bands);
-    return res.render('bands', {test, bands});
+    return res.render('bands', {bands});
 
    // return res.status(200).json({ success: true, count: bands.length, data: bands });
 });
@@ -39,7 +38,7 @@ exports.getBand = asyncHandler(async (req, res, next) => {
             return next(new ErrorResponse(`Band not found with id of ${req.params.id}`, 404));
         } 
     const test = JSON.stringify(bands);
-    return res.render('show', {test, bands});
+    return res.render('show', {bands});
     //return res.status(200).json({ success: true, data: test});
 });
 
