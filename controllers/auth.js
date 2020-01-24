@@ -52,10 +52,6 @@ exports.login = asyncHandler(async(req, res, next) => {
     // or an incorrect password -- Extra Security
 
     sendTokenResponse(user, 200, res);
-    res.status(200).json({
-        success: true,
-        data: user
-    });
 });
 
 
