@@ -9,6 +9,8 @@ const errorHandler = require('./middleware/error');
 const morgan = require('morgan');
 const fileupload = require('express-fileupload');
 const expresslayouts = require('express-ejs-layouts');
+const session = require('express-session')
+const flash = require('connect-flash');
 
 // Load env vars
 dotenv.config({ path: './config/config.env' })
@@ -38,6 +40,15 @@ app.use(fileupload());
 
 // Sanitize data
 app.use(mongoSanitize());
+
+// Express session middleware
+app.use(session({
+    secret: 'secret',
+    resave: true,
+    saveUninitialized: true,
+  }));
+
+  app.use(flash());
 
 // Set static folder
 app.use('/public', express.static(path.join(__dirname, 'public')));

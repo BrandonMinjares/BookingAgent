@@ -52,11 +52,10 @@ exports.login = asyncHandler(async(req, res, next) => {
     // or an incorrect password -- Extra Security
 
     sendTokenResponse(user, 200, res);
-    
-    //const test = JSON.stringify(user);
-    console.log(user);
-    return res.render('dashboard', {user});
-
+    res.status(200).json({
+        success: true,
+        data: user
+    });
 });
 
 

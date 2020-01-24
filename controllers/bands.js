@@ -37,7 +37,6 @@ exports.getBand = asyncHandler(async (req, res, next) => {
         if(!bands) {
             return next(new ErrorResponse(`Band not found with id of ${req.params.id}`, 404));
         } 
-    const test = JSON.stringify(bands);
     return res.render('show', {bands});
     //return res.status(200).json({ success: true, data: test});
 });
