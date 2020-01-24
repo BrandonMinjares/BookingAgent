@@ -85,9 +85,9 @@ app.get('/contact', (req, res) => res.render('contact'));
 
 app.post('/register', (req, res) => {
     const { name, email, password, password2 } = req.body;
-    console.log(req.body);
+    console.log(name + email + password);
     const info = req.body;
-    res.render('dashboard', {info});
+    res.redirect('login');
 });
 
 
