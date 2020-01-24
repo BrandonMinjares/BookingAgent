@@ -8,7 +8,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 const errorHandler = require('./middleware/error');
 const morgan = require('morgan');
 const fileupload = require('express-fileupload');
-const expresslayouts = require('express-ejs-layouts');
+const expressLayouts = require('express-ejs-layouts');
 const session = require('express-session')
 const flash = require('connect-flash');
 
@@ -48,7 +48,7 @@ app.use(session({
     saveUninitialized: true,
   }));
 
-  app.use(flash());
+app.use(flash());
 
 // Set static folder
 app.use('/public', express.static(path.join(__dirname, 'public')));
@@ -63,11 +63,14 @@ app.use('/user', user);
 // used in a linear order, therefore error handler needs to catch error from routes above
 app.use(errorHandler);
 
+// Body parser
 app.use(bodyParser.urlencoded({ extended: true })); 
 
 // EJS
-//app.use(expresslayouts);
+// Must be above the set view engine
 app.set("view engine", "ejs");
+
+app.use(express.urlencoded({ extended: false }));
 
 
 // App.get gets the pathway that is added
@@ -78,14 +81,26 @@ app.get('/login', (req, res) => res.render('login'));
 app.post('/login', (req, res) => res.redirect('dashboard'));
 app.get('/register', (req, res) => res.render('register'));
 app.get('/contact', (req, res) => res.render('contact'));
-app.post('/register', (req, res) => res.redirect('dashboard'));
+
+
+app.post('/register', (req, res) => {
+    console.log(req.body);
+    const info = req.body;
+    res.render('dashboard', {info});
+});
+
+
 app.get('/profile', (req, res) => res.render('profile'));
 app.get('/bandregister', (req, res) => res.render('bandregister'));
 app.post('/bandregister', (req, res) => res.redirect('/'));
 app.get('/dashboard', (req, res) => res.render('dashboard'));
-//app.get('/bands', (req,res) => res.render('/bands'));
-//app.post('/auth/register', (req, res) => );
-//app.get('/dashboard', (req, res) => res.render('dashboard'));
+
+
+
+
+
+
+
 
 const PORT = process.env.PORT || 5000;
 const server = app.listen(PORT, () => console.log(`Server started in ${process.env.NODE_ENV} mode on port ${PORT}`));
