@@ -78,15 +78,17 @@ app.use(express.urlencoded({ extended: false }));
 app.get('/', (req, res) => res.render('home'));
 app.get('/home', (req, res) => res.render('home'));
 app.get('/login', (req, res) => res.render('login'));
+
 app.post('/login', (req, res) => res.redirect('dashboard'));
+
 app.get('/register', (req, res) => res.render('register'));
 app.get('/contact', (req, res) => res.render('contact'));
 
 
 app.post('/register', (req, res) => {
-    const { name, email, password, password2 } = req.body;
-    console.log(name + email + password);
-    const info = req.body;
+    //const { name, email, password, password2 } = req.body;
+    //console.log(name + email + password);
+    //const info = req.body;
     res.redirect('login');
 });
 
