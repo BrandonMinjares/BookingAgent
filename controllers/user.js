@@ -14,6 +14,18 @@ exports.createUser = asyncHandler(async (req, res, next) => {
         });
 });
 
+// @desc      Get single user
+// @route     GET /api/v1/users/:id
+// @access    Private/Admin
+exports.getUser = asyncHandler(async (req, res, next) => {
+    const user = await User.findById(req.params.id);
+  
+    res.status(200).json({
+      success: true,
+      data: user
+    });
+  });
+
 // @desc    Update user
 // @route   PUT /users/:id
 // @access  Private
