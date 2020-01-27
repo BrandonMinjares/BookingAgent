@@ -2,17 +2,16 @@
 
 <div class = "container-fluid">
     <div class ="row">
-        <div class="col">
+        <h3>Tributes</h3>
             <% bands.forEach(function(band) { %>
-                <div>
+                <div class="col">
                 <h4><%= band.name %></h4>
-                <img src="/public/uploads/<%=band.photo %>">
+                <img class="image-resize" src="/public/uploads/<%=band.photo %>">
                 <p>
                     <a href="/bands/<%= band._id %>" class="btn btn-primary">More Info</a>
                 </p>
-            </div>
+                </div>
             <% }); %>
-        </div>
     </div>
 </div>
 

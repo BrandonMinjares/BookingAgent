@@ -40,3 +40,13 @@
   h1 {
     margin: 0;
   }
+
+  .image-resize {
+    height: 28vh;
+  }
+
+  .col {
+    float: left;
+    width: 30.33%;
+    padding: 5px;
+  }

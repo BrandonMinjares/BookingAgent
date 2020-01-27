@@ -13,9 +13,6 @@ const session = require('express-session');
 const flash = require('connect-flash');
 const passport = require('passport');
 
-const initializePassport = require('./config/passport-config');
-initializePassport(passport);
-
 // Load env vars
 dotenv.config({ path: './config/config.env' })
 
