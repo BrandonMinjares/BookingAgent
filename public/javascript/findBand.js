@@ -3,7 +3,7 @@ const userRequest = document.querySelector('.userRequest');
         addEventListener('submit', e => {
             e.preventDefault();
             const band = document.getElementById('band').value;
-            findBand(band);
+            //findBand(band);
         }); 
 }
 

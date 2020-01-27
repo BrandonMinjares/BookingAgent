@@ -93,10 +93,13 @@ app.post('/register', (req, res) => {
     res.redirect('login');
 });
 
+app.get('/logout', (req, res) => res.redirect('login'));
+
 
 app.get('/profile', (req, res) => res.render('profile'));
 app.get('/bandregister', (req, res) => res.render('bandregister'));
-app.post('/bandregister', (req, res) => res.redirect('/'));
+
+app.post('/bandregister', (req, res) => res.redirect('bands'));
 app.get('/dashboard', (req, res) => res.render('dashboard'));
 
 

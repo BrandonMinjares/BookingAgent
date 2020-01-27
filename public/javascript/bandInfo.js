@@ -1,6 +1,4 @@
-document.querySelector('.bandInfo').addEventListener("onclick", function() {
-    alert('ehy');
-});
+
 
 /*
 const registerUser = async (name, email, password) => {
