@@ -9,7 +9,7 @@ const registerForm = document.querySelector('.registerForm');
             registerUser(name, email, password);
         }); 
 }
-
+ 
 const registerUser = async (name, email, password) => {
     try {
         const res = await axios({

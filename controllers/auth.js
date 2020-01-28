@@ -8,13 +8,14 @@ const asyncHandler = require('../middleware/async');
 // @route   POST /auth/register
 // @access  Public
 exports.register = asyncHandler(async(req, res, next) => {
-    const { name, email, password } = req.body;
+    const { name, email, password, role } = req.body;
 
     // Create user
     const user = await User.create({
         name,
         email,
-        password
+        password,
+        role
     });
 
     sendTokenResponse(user, 200, res);
@@ -50,7 +51,6 @@ exports.login = asyncHandler(async(req, res, next) => {
     // Important to make !user and !isMatch function return same message to ensure that the
     // person who entered the information isn't sure whether the error was an incorrect email
     // or an incorrect password -- Extra Security
-
     sendTokenResponse(user, 200, res);
 });
 
@@ -72,7 +72,7 @@ exports.getMe = asyncHandler(async (req, res, next) => {
 // @access  Private
 exports.logout = asyncHandler(async (req, res, next) => {
     res.cookie('token', 'none', {
-        expires: new Date(Date.now() + 10 * 1000),
+        expiresIn: new Date(Date.now() + 10 * 1000),
         httpOnly: true
     });
     
@@ -133,7 +133,7 @@ const sendTokenResponse = (user, statusCode, res) => {
     const token = user.getSignedJwtToken();
 
     const options = {
-        expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRE * 24 * 60 * 60 * 1000),
+        expiresIn: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRE * 24 * 60 * 60 * 1000),
         httpOnly: true
     };
 

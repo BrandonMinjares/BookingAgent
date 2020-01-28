@@ -58,7 +58,7 @@ const BandsSchema = new mongoose.Schema({
     },
     genre: {
         type: [String],
-        required: true,
+        required: [true, 'Please add genre'],
         enum: [
             'Original Artist',
             'Tribute'
