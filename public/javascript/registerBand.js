@@ -7,7 +7,6 @@ const registerGroup = document.querySelector('.registerGroup');
             const genre = document.getElementById('genre').value;
             const photo = document.getElementById('photo').value;
             const address = document.getElementById('address').value;
-
             registerBand(name, description, address);
         }); 
 }

@@ -47,10 +47,8 @@ exports.getBand = asyncHandler(async (req, res, next) => {
 exports.createBand = asyncHandler(async (req, res, next) => {
     // Add user to req.body
     req.body.user = req.user.id;
-    console.log(req.body);
     // Checks if a band has already been created
     const publishedBand = await Band.findOne({ user: req.user.id });
-    console.log('testing from bands route');
 
     /*
     if(publishedBand && req.user.role !== 'admin') {
