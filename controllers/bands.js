@@ -47,17 +47,18 @@ exports.getBand = asyncHandler(async (req, res, next) => {
 exports.createBand = asyncHandler(async (req, res, next) => {
     // Add user to req.body
     req.body.user = req.user.id;
-
     // Checks if a band has already been created
     const publishedBand = await Band.findOne({ user: req.user.id });
+    console.log('testing from bands route');
 
+    /*
     if(publishedBand && req.user.role !== 'admin') {
         return next(new ErrorResponse(`The user with ID ${req.user.id} has already published a band`, 400));
-    }
+    }*/
 
     const band = await Band.create(req.body);
     
-    return res.status(200).json({
+    return res.status(201).json({
         success: true,
         data: band
     }); 
@@ -76,7 +77,7 @@ exports.updateBand = asyncHandler(async (req, res, next) => {
     // Make sure user is band owner
     if(band.user.toString() !== req.user.id && req.user.role != 'admin') {
         return next(
-            new ErrorResponse(`User ${req.params.id} is not allowed to access this route`, 401)
+            new ErrorResponse(`User ${req.user.id} is not allowed to access this route`, 401)
         );
     }
 
