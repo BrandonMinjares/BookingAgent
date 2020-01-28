@@ -26,15 +26,17 @@ const auth = require('./routes/auth');
 
 const app = express();
 
+// Dev logging middleware
+if(process.env.NODE_ENV === 'development') {
+    app.use(morgan('dev'));
+}
+
 // Body parser
 app.use(express.json());
 
 // Cookie parser
 app.use(cookieParser());
 
-if (process.env.NODE_ENV === 'development') {
-    app.use(morgan('dev'));
-}
 // File uploading
 app.use(fileupload());
 
@@ -59,7 +61,6 @@ app.use('/bands', bands);
 app.use('/auth', auth);
 app.use('/user', user);
 
-
 // Error handler must be placed after above routes because routes are
 // used in a linear order, therefore error handler needs to catch error from routes above
 app.use(errorHandler);
@@ -79,9 +80,7 @@ app.use(express.urlencoded({ extended: false }));
 app.get('/', (req, res) => res.render('home'));
 app.get('/home', (req, res) => res.render('home'));
 app.get('/login', (req, res) => res.render('login'));
-
-app.post('/login', (req, res) => res.redirect('dashboard'));
-
+app.post('/login', (req, res) => res.redirect('home'));
 app.get('/register', (req, res) => res.render('register'));
 app.get('/contact', (req, res) => res.render('contact'));
 
