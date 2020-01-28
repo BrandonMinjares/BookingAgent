@@ -1,7 +1,6 @@
 const registerGroup = document.querySelector('.registerGroup');
     if(registerGroup) {
         addEventListener('submit', e => {
-            e.preventDefault();
             const name = document.getElementById('name').value;
             const description = document.getElementById('description').value;
             const number = document.getElementById('number').value;            
@@ -20,7 +19,7 @@ const registerBand = async (name, description, address) => {
         data: {
             name,
             description,
-            address
+            address        
         }
     });
 

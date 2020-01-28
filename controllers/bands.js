@@ -1,6 +1,6 @@
 const path = require('path');
 const ErrorResponse = require('../utils/errorResponse');
-const Band = require('../models/Bands');
+const Bands = require('../models/Bands');
 const geocoder = require('../utils/geocoder');
 const asyncHandler = require('../middleware/async');
 
@@ -19,7 +19,7 @@ exports.getBands = asyncHandler(async (req, res, next) => {
         });
     }*/
 
-    const bands = await Band.find();
+    const bands = await Bands.find();
     return res.render('bands', {bands});
 
    // return res.status(200).json({ success: true, count: bands.length, data: bands });
@@ -30,7 +30,7 @@ exports.getBands = asyncHandler(async (req, res, next) => {
 // @access  Public
 exports.getBand = asyncHandler(async (req, res, next) => {
         
-    const bands = await Band.findById(req.params.id);
+    const bands = await Bands.findById(req.params.id);
 
     //const band = await Band.findById(req.user.id);
         // If the ID is in the correct format but the band does not exist you get custom error message
@@ -48,14 +48,14 @@ exports.createBand = asyncHandler(async (req, res, next) => {
     // Add user to req.body
     req.body.user = req.user.id;
     // Checks if a band has already been created
-    const publishedBand = await Band.findOne({ user: req.user.id });
+    const publishedBand = await Bands.findOne({ user: req.user.id });
 
     /*
     if(publishedBand && req.user.role !== 'admin') {
         return next(new ErrorResponse(`The user with ID ${req.user.id} has already published a band`, 400));
     }*/
 
-    const band = await Band.create(req.body);
+    const band = await Bands.create(req.body);
     res.status(201).json({
         success: true,
         data: band
@@ -79,7 +79,7 @@ exports.updateBand = asyncHandler(async (req, res, next) => {
         );
     }
 
-    band = await Band.findOneAndUpdate(req.params.id, req.body, {
+    band = await Bands.findOneAndUpdate(req.params.id, req.body, {
         new: true,
         runValidators: true
     });
@@ -92,7 +92,7 @@ exports.updateBand = asyncHandler(async (req, res, next) => {
 // @route   PUT bands/:id
 // @access  Private
 exports.deleteBand = asyncHandler(async (req, res, next) => {
-        const band = await Band.findByIdAndDelete(req.params.id);
+        const band = await Bands.findByIdAndDelete(req.params.id);
         if(!band) {
             return next(new ErrorResponse(`Band not found with id of ${req.params.id}`, 404));
         } 
@@ -119,7 +119,7 @@ exports.getBandsInRadius = asyncHandler(async (req, res, next) => {
     //const EarthDistance = 3963;
     const radius = distance / 3963;
 
-    const bands = await Band.find({
+    const bands = await Bands.find({
         location: { $geoWithin: { $centerSphere: [ [ lng, lat ], radius ] } }
     });
 
@@ -135,7 +135,7 @@ exports.getBandsInRadius = asyncHandler(async (req, res, next) => {
 // @route   PUT bands/:id/photo
 // @access  Private
 exports.bandPhotoUpload = asyncHandler(async (req, res, next) => {
-    const band = await Band.findById(req.params.id);
+    const band = await Bands.findById(req.params.id);
     if(!band) {
         return next(new ErrorResponse(`Band not found with id of ${req.params.id}`, 404));
     } 
@@ -166,7 +166,7 @@ exports.bandPhotoUpload = asyncHandler(async (req, res, next) => {
             return next(new ErrorResponse(`Problem with file upload`, 500));
         }
 
-        await Band.findByIdAndUpdate(req.params.id, { photo: file.name });
+        await Bands.findByIdAndUpdate(req.params.id, { photo: file.name });
     });
 
     res.status(200).json({ success: true, data: file.name })
