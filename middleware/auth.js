@@ -4,12 +4,6 @@ const ErrorResponse = require('../utils/errorResponse');
 const User = require('../models/User');
 const config = require('config');
 
-const config = require('config');
-
-
-
-
-
 
 // Protect routes
 exports.protect = asyncHandler(async (req, res, next) => {

@@ -1,4 +1,4 @@
-/*const registerGroup = document.querySelector('.registerGroup');
+const registerGroup = document.querySelector('.registerGroup');
     if(registerGroup) {
         addEventListener('submit', e => {
             e.preventDefault();
@@ -28,4 +28,3 @@ const registerBand = async (name, description, address) => {
         alert(err.response.data.message);
     }
 };
-*/

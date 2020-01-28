@@ -56,12 +56,7 @@ exports.createBand = asyncHandler(async (req, res, next) => {
     }*/
 
     const band = await Band.create(req.body);
-<<<<<<< HEAD
-    res.status(200).json({
-=======
-    
     res.status(201).json({
->>>>>>> tmp
         success: true,
         data: band
     }); 
