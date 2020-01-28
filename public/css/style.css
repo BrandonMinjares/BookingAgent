@@ -50,3 +50,10 @@
     width: 30.33%;
     padding: 5px;
   }
+
+  .login-page {
+    background-color: #7ac5cd;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+  }

@@ -82,7 +82,7 @@ const BandsSchema = new mongoose.Schema({
         // connects to an id that represents the user model
         type: mongoose.Schema.ObjectId,
         ref: 'User',
-        required: true
+        required: true,
     }
 }, {
     toJSON: { virtuals: true },
