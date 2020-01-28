@@ -102,6 +102,8 @@ app.post('/bands', (req, res) => {
     res.redirect('bands');
 });
 
+app.get('bands', (req, res) => res.render('bands'));
+
 app.get('/dashboard', (req, res) => res.render('dashboard'));
 
 

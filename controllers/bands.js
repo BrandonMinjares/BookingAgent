@@ -54,7 +54,6 @@ exports.createBand = asyncHandler(async (req, res, next) => {
     if(publishedBand && req.user.role !== 'admin') {
         return next(new ErrorResponse(`The user with ID ${req.user.id} has already published a band`, 400));
     }*/
-
     const band = await Bands.create(req.body);
     res.status(201).json({
         success: true,
