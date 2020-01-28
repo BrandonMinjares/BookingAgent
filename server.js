@@ -93,7 +93,7 @@ app.post('/register', (req, res) => {
 });
 
 app.get('/logout', (req, res) => res.redirect('login'));
-
+app.post('/bands', (req, res) => res.redirect('home'));
 
 app.get('/profile', (req, res) => res.render('profile'));
 app.get('/bandregister', (req, res) => res.render('bandregister'));

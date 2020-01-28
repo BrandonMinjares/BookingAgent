@@ -8,11 +8,11 @@ const registerGroup = document.querySelector('.registerGroup');
             const photo = document.getElementById('photo').value;
             const address = document.getElementById('address').value;
 
-            registerBand(name, description, address, genre);
+            registerBand(name, description, address);
         }); 
 }
 
-const registerBand = async (name, description, address, genre) => {
+const registerBand = async (name, description, address) => {
     try {
         const res = await axios({
         method:'POST',
@@ -20,8 +20,7 @@ const registerBand = async (name, description, address, genre) => {
         data: {
             name,
             description,
-            address,
-            genre
+            address
         }
     });
 
