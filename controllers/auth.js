@@ -27,7 +27,6 @@ exports.register = asyncHandler(async(req, res, next) => {
 // @access  Public
 exports.login = asyncHandler(async(req, res, next) => {
     const { email, password } = req.body;
-    console.log('logged in');
 
     // Validate email and password
     if(!email || !password) {
@@ -47,6 +46,8 @@ exports.login = asyncHandler(async(req, res, next) => {
     if (!isMatch) {
         return next(new ErrorResponse('Invalid credentials. Either user does not exist or password is incorrect.', 401));
     }
+    console.log('logged in');
+
 
     // Important to make !user and !isMatch function return same message to ensure that the
     // person who entered the information isn't sure whether the error was an incorrect email
@@ -141,8 +142,15 @@ const sendTokenResponse = (user, statusCode, res) => {
         options.secure = true;
     }
 
+    /*
     res
         .status(statusCode)
         .cookie('token', token, options)
         .json({ success: true, token });
+
+        */
+       res
+       .status(statusCode)
+       .cookie('token', token, options)
+       .json({ success: true, token });
 };

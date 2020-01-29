@@ -17,7 +17,6 @@ const loginUser = async (email, password) => {
             password
         }
     });
-
     if (res.data.status === 'success') {
         alert('Login success');
         window.setTimeout(() => {
