@@ -81,7 +81,7 @@ app.use(express.urlencoded({ extended: false }));
 app.get('/', (req, res) => res.render('home'));
 app.get('/home', (req, res) => res.render('home'));
 app.get('/login', (req, res) => res.render('login'));
-app.post('/login', (req, res) => res.redirect('home'));
+app.post('/login', (req, res) => res.redirect('profile'));
 app.get('/register', (req, res) => res.render('register'));
 app.get('/contact', (req, res) => res.render('contact'));
 
@@ -96,7 +96,7 @@ app.post('/register', (req, res) => {
 app.get('/logout', (req, res) => res.redirect('login'));
 //app.post('/bands', (req, res) => res.redirect('home'));
 
-app.get('/profile', (req, res) => res.render('profile'));
+app.get('/me', (req, res) => res.render('me'));
 app.get('/bandregister', (req, res) => res.render('bandregister'));
 
 // Only tmp to see if axios works
