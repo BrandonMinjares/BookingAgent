@@ -6,14 +6,12 @@ const BandsSchema = new mongoose.Schema({
     name: {
         type: String,
         required: [true, 'Please add a name'],
-        unique: true,
         trim: true,
         maxlength: [50, 'Name can not be more than 30 charachters']
     },
     slug: String,
     description: {
         type: String,
-        required: [true, 'Please add a description'],
         maxlength: [200, 'Description can not be more than 200 charachters']
     },
     website: {
@@ -58,11 +56,12 @@ const BandsSchema = new mongoose.Schema({
     },
     genre: {
         type: [String],
-        required: [true, 'Please add genre'],
         enum: [
+            'solo',
             'Original Artist',
             'Tribute'
-        ]
+        ],
+        default: 'solo'
     },
     averageRating: {
         type: Number,
