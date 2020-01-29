@@ -99,7 +99,8 @@ app.get('/logout', (req, res) => res.redirect('login'));
 app.get('/profile', (req, res) => res.render('profile'));
 app.get('/bandregister', (req, res) => res.render('bandregister'));
 
-
+// Only tmp to see if axios works
+app.post('/bandregister', (req, res) => res.redirect('bands'));
 
 app.get('/bands', (req, res) => res.render('bands'));
 
