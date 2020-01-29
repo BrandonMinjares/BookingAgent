@@ -12,6 +12,7 @@ const registerGroup = document.querySelector('.registerGroup');
 }
 
 const registerBand = async (name, description, address) => {
+
     try {
         const res = await axios({
         method:'POST',
@@ -19,7 +20,7 @@ const registerBand = async (name, description, address) => {
         data: {
             name,
             description,
-            address        
+            address     
         }
     });
 

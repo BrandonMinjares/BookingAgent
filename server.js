@@ -65,6 +65,7 @@ app.use('/user', user);
 // used in a linear order, therefore error handler needs to catch error from routes above
 app.use(errorHandler);
 
+app.use(bodyParser.json());
 // Body parser
 app.use(bodyParser.urlencoded({ extended: true })); 
 
@@ -98,9 +99,7 @@ app.get('/logout', (req, res) => res.redirect('login'));
 app.get('/profile', (req, res) => res.render('profile'));
 app.get('/bandregister', (req, res) => res.render('bandregister'));
 
-app.post('/bands', (req, res) => {
-    res.redirect('bands');
-});
+
 
 app.get('bands', (req, res) => res.render('bands'));
 
