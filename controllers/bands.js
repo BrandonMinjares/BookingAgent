@@ -55,6 +55,7 @@ exports.createBand = asyncHandler(async (req, res, next) => {
         return next(new ErrorResponse(`The user with ID ${req.user.id} has already published a band`, 400));
     }*/
     const band = await Bands.create(req.body);
+    console.log(band);
     res.status(201).json({
         success: true,
         data: band

@@ -101,7 +101,7 @@ app.get('/bandregister', (req, res) => res.render('bandregister'));
 
 
 
-app.get('bands', (req, res) => res.render('bands'));
+app.get('/bands', (req, res) => res.render('bands'));
 
 app.get('/dashboard', (req, res) => res.render('dashboard'));
 
