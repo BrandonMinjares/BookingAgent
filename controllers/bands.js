@@ -11,19 +11,19 @@ const asyncHandler = require('../middleware/async');
 exports.getBands = asyncHandler(async (req, res, next) => {
     let query
     let queryStr = req.query;
-    /*let query;
-    if (req.params.bandId) {
-        query = Band.find({ band: req.params.bandId });
-    } else {
-        query = Band.find().populate({
-            path: 'bands',
-            select: 'name description'
-        });
-    }*/
+
     query = Bands.find(queryStr);
     const bands = await query;
+
+    // If no req query then all bands get render because none are being filtered
     return res.render('bands', {bands});
 
+    /* We need to be able to process form info in bands view and add it to 
+    req query */
+
+
+
+    // Below is for JSON
    // return res.status(200).json({ success: true, count: bands.length, data: bands });
 });
 
