@@ -102,7 +102,9 @@ app.get('/bandregister', (req, res) => res.render('bandregister'));
 // Only tmp to see if axios works
 app.post('/bandregister', (req, res) => res.redirect('bands'));
 
-app.get('/bands', (req, res) => res.render('bands'));
+app.get('/bands', function(req, res){
+    res.render('bands');
+});
 
 app.get('/dashboard', (req, res) => res.render('dashboard'));
 
