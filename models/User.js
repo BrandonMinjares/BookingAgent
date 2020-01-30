@@ -23,7 +23,7 @@ const UserSchema = new mongoose.Schema({
         required: [true, 'Please add a password'],
         minlength: 6,
         // select: false makes it so that the password wont show up in any output
-        select: false
+        select: true
     },
     role: {
         type: String,
@@ -45,6 +45,7 @@ const UserSchema = new mongoose.Schema({
     } 
 });
 
+
 // Encrypt passwrod using bcrypt
 UserSchema.pre('save', async function(next) {
     if(!this.isModified('password')) {
@@ -56,7 +57,7 @@ UserSchema.pre('save', async function(next) {
     this.password = await bcrypt.hash(this.password, salt);
 });
 
-
+/*
 // Sign JWT and return
 UserSchema.methods.getSignedJwtToken = function() {
     return jwt.sign({ id: this._id }, process.env.JWT_SECRET, {
@@ -86,5 +87,5 @@ UserSchema.methods.getResetPasswordToken = function() {
     return resetToken;
 };
 
-
+*/
 module.exports = mongoose.model('User', UserSchema);

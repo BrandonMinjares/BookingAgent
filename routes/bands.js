@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { protect, authorize }  = require('../middleware/auth');
+const { authorize }  = require('../middleware/auth');
 
  const { 
     getBands,
@@ -20,13 +20,13 @@ const Band = require('../models/Bands');
 router
     .route('/')
     .get(getBands)
-    .post(protect, authorize('user', 'paidUser', 'admin'), createBand);
+    .post(authorize('user', 'paidUser', 'admin'), createBand);
 
 router
     .route('/:id')
     .get(getBand)
-    .put(protect,  updateBand)
-    .delete(protect, authorize('user', 'paidUser', 'admin'), deleteBand);
+    .put(updateBand)
+    .delete(authorize('user', 'paidUser', 'admin'), deleteBand);
 
 router
     .route('/:id/photo')

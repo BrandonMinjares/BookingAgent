@@ -9,9 +9,14 @@ const errorHandler = require('./middleware/error');
 const morgan = require('morgan');
 const fileupload = require('express-fileupload');
 const expressLayouts = require('express-ejs-layouts');
+const passport = require('passport');
+
 const session = require('express-session');
 const flash = require('connect-flash');
-const passport = require('passport');
+
+
+
+require('./config/passport')(passport);
 
 // Load env vars
 dotenv.config({ path: './config/config.env' })
@@ -44,12 +49,19 @@ app.use(fileupload());
 // Sanitize data
 app.use(mongoSanitize());
 
+app.use(express.urlencoded({ extended: false }));
+
+
 // Express session middleware
 app.use(session({
     secret: 'secret',
     resave: true,
     saveUninitialized: true,
   }));
+
+  // Passport middleware
+  app.use(passport.initialize());
+  app.use(passport.session());
 
 app.use(flash());
 
@@ -72,8 +84,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // EJS
 // Must be above the set view engine
 app.set("view engine", "ejs");
-
-app.use(express.urlencoded({ extended: false }));
 
 
 // App.get gets the pathway that is added

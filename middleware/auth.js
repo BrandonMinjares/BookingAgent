@@ -4,7 +4,7 @@ const ErrorResponse = require('../utils/errorResponse');
 const User = require('../models/User');
 const config = require('config');
 
-
+/*
 // Protect routes
 exports.protect = asyncHandler(async (req, res, next) => {
   let token;
@@ -34,6 +34,8 @@ exports.protect = asyncHandler(async (req, res, next) => {
     return next(new ErrorResponse('Not authorized to access this route', 401));
   }
 });
+*/
+
 
 // Grant access to specific roles
 
