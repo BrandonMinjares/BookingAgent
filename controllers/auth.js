@@ -24,18 +24,18 @@ exports.register = asyncHandler(async(req, res, next) => {
 // @desc    Login User
 // @route   POST /auth/login
 // @access  Public
-exports.login = ((req, res, next) => {
+exports.login = (req, res, next) => {
     passport.authenticate('local', {
         successRedirect: '/dashboard',
         failureRedirect: '/login'
     })(req, res, next);
     console.log('loggedin');
-});
+};
 
 // @desc    Log user out / clear cookie
 // @route   GET /auth/logout
 // @access  Private
-exports.logout = ( (req, res) => {
+exports.logout = (req, res) => {
     console.log('testing in lougout');
     req.logout();
     
@@ -46,7 +46,7 @@ exports.logout = ( (req, res) => {
       });
       
     res.redirect('/login');
-});
+};
 
 
 // @desc    Get current logged in User

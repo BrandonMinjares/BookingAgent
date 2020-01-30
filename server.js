@@ -104,8 +104,14 @@ app.post('/register', (req, res) => {
     res.redirect('login');
 });
 
-app.get('/logout', (req, res) => res.redirect('login'));
+app.get('/logout', function(req, res) {
+    req.logout();
+    res.redirect('login');
+});
 //app.post('/bands', (req, res) => res.redirect('home'));
+
+
+
 
 app.get('/me', (req, res) => res.render('me'));
 app.get('/bandregister', ensureAuthenticated, (req, res) => res.render('bandregister'));
