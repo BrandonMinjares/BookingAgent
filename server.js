@@ -148,9 +148,9 @@ app.get('/dashboard', (req, res) =>
 */
 
  app.get('/dashboard', function(req, res) {
-     console.log('user name ' + req.user.name);
     res.render('dashboard', {
-        name: req.user.name
+        name: req.user.name,
+        id: req.user.id
     });
  });
  
