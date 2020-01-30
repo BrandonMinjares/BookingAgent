@@ -108,7 +108,7 @@ app.get('/logout', (req, res) => res.redirect('login'));
 //app.post('/bands', (req, res) => res.redirect('home'));
 
 app.get('/me', (req, res) => res.render('me'));
-app.get('/bandregister', (req, res) => res.render('bandregister'));
+app.get('/bandregister', ensureAuthenticated, (req, res) => res.render('bandregister'));
 
 // Only tmp to see if axios works
 app.post('/bandregister', (req, res) => res.redirect('bands'));

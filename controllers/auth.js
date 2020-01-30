@@ -24,7 +24,7 @@ exports.register = asyncHandler(async(req, res, next) => {
 // @desc    Login User
 // @route   POST /auth/login
 // @access  Public
-exports.login = asyncHandler((req, res, next) => {
+exports.login = ((req, res, next) => {
     passport.authenticate('local', {
         successRedirect: '/dashboard',
         failureRedirect: '/login'
@@ -35,8 +35,16 @@ exports.login = asyncHandler((req, res, next) => {
 // @desc    Log user out / clear cookie
 // @route   GET /auth/logout
 // @access  Private
-exports.logout = asyncHandler( (req, res, next) => {
+exports.logout = ( (req, res) => {
+    console.log('testing in lougout');
     req.logout();
+    
+    req.session.destroy(function (err) {
+        if (err) { return next(err); }
+        // The response should indicate that the user is no longer authenticated.
+        return res.send({ authenticated: req.isAuthenticated() });
+      });
+      
     res.redirect('/login');
 });
 
