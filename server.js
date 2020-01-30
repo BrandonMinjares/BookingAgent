@@ -92,7 +92,15 @@ app.set("view engine", "ejs");
 app.get('/', (req, res) => res.render('home'));
 app.get('/home', (req, res) => res.render('home'));
 app.get('/login', (req, res) => res.render('login'));
-app.post('/login', (req, res) => res.redirect('home'));
+app.post('/login', function(req, res, next) {
+    passport.authenticate('local', {
+        successRedirect: '/dashboard',
+        failureRedirect: '/login'
+    })(req, res, next);
+});
+
+
+
 app.get('/register', (req, res) => res.render('register'));
 app.get('/contact', (req, res) => res.render('contact'));
 
@@ -105,7 +113,17 @@ app.post('/register', (req, res) => {
 });
 
 app.get('/logout', function(req, res) {
+    console.log('LOGGED OUT');
     req.logout();
+    /*
+    req.session.destroy(function (err) {
+        if (err) { return next(err); }
+        // The response should indicate that the user is no longer authenticated.
+        return res.send({ authenticated: req.isAuthenticated() });
+      });
+
+      */
+
     res.redirect('login');
 });
 //app.post('/bands', (req, res) => res.redirect('home'));
@@ -122,9 +140,20 @@ app.post('/bandregister', (req, res) => res.redirect('bands'));
 app.get('/bands', function(req, res){
     res.render('bands');
 });
+/*
+app.get('/dashboard', (req, res) =>
+ res.render('dashboard', {
+     user: req.user.name
+ }));
+*/
 
-app.get('/dashboard', (req, res) => res.render('dashboard'));
-
+ app.get('/dashboard', function(req, res) {
+     console.log('user name ' + req.user.name);
+    res.render('dashboard', {
+        name: req.user.name
+    });
+ });
+ 
 
 
 const PORT = process.env.PORT || 5000;
