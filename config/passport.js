@@ -10,7 +10,6 @@ module.exports = function(passport) {
             User.findOne({ 
                 email: email
              }).then(user => {
-                 console.log(user);
                     if(!user) {
                         return done(null, false, { message: 'No user'});
                     }
@@ -20,6 +19,7 @@ module.exports = function(passport) {
                         
                         if(err) throw err;
                         if(isMatch) {
+                            console.log('mathc');
                             return done(null, user);
                         } else {
                             return done(null, false, { message: ' password is not correct' })

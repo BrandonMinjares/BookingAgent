@@ -26,9 +26,18 @@ exports.register = asyncHandler(async(req, res, next) => {
 // @access  Public
 exports.login = asyncHandler((req, res, next) => {
     passport.authenticate('local', {
-        successRedirect: '/home',
+        successRedirect: '/dashboard',
         failureRedirect: '/login'
     })(req, res, next);
+    console.log('loggedin');
+});
+
+// @desc    Log user out / clear cookie
+// @route   GET /auth/logout
+// @access  Private
+exports.logout = asyncHandler( (req, res, next) => {
+    req.logout();
+    res.redirect('/login');
 });
 
 
@@ -44,20 +53,6 @@ exports.getMe = asyncHandler(async (req, res, next) => {
     });
 });
 
-// @desc    Log user out / clear cookie
-// @route   GET /auth/logout
-// @access  Private
-exports.logout = asyncHandler(async (req, res, next) => {
-    res.cookie('token', 'none', {
-        expiresIn: new Date(Date.now() + 10 * 1000),
-        httpOnly: true
-    });
-    
-    res.status(200).json({
-        success: true,
-        data: {}
-    });
-});
 
 // @desc    Forgot Password
 // @route   POST /auth/forgotpassword
