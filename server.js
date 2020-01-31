@@ -147,7 +147,7 @@ app.get('/dashboard', (req, res) =>
  }));
 */
 
- app.get('/dashboard', function(req, res) {
+ app.get('/dashboard', ensureAuthenticated, function(req, res) {
     res.render('dashboard', {
         name: req.user.name,
         id: req.user.id
