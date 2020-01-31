@@ -14,6 +14,8 @@ const passport = require('passport');
 const session = require('express-session');
 const flash = require('connect-flash');
 
+const sendEmail = require('./utils/email');
+
 const { ensureAuthenticated } = require('./config/auth');
 
 
@@ -122,8 +124,7 @@ app.get('/logout', function(req, res) {
         // The response should indicate that the user is no longer authenticated.
         return res.send({ authenticated: req.isAuthenticated() });
       });
-
-      */
+    */
 
     res.redirect('login');
 });
@@ -132,6 +133,20 @@ app.get('/logout', function(req, res) {
 //Send Email
 app.post('/send', (req, res) => {
     console.log(req.body);
+
+    try {
+        sendEmail({
+            name: req.body.name,
+            email: req.body.email,
+            number: req.body.number,
+            subject: req.body.subject,
+            message: req.body.message
+        });
+
+    } catch (err) {
+        console.log(err);
+    }
+    res.redirect('dashboard');
 });
 
 
