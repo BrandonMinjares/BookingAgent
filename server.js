@@ -129,6 +129,10 @@ app.get('/logout', function(req, res) {
 });
 //app.post('/bands', (req, res) => res.redirect('home'));
 
+//Send Email
+app.post('/send', (req, res) => {
+    console.log(req.body);
+});
 
 
 
