@@ -104,6 +104,7 @@ app.post('/login', function(req, res, next) {
 app.get('/register', (req, res) => res.render('register'));
 app.get('/contact', (req, res) => res.render('contact'));
 
+app.get('/posts', ensureAuthenticated, (req, res) => res.render('posts'));
 
 app.post('/register', (req, res) => {
     //const { name, email, password, password2 } = req.body;
