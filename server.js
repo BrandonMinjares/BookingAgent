@@ -174,6 +174,9 @@ app.get('/dashboard', (req, res) =>
     });
  });
  
+app.get('/userbands', (req, res) => res.render('userbands'));
+
+
 
 
 const PORT = process.env.PORT || 5000;

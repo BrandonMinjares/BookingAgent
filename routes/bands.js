@@ -5,6 +5,7 @@ const { authorize }  = require('../middleware/auth');
  const { 
     getBands,
     getBand,
+    getUserBands,
     createBand,
     updateBand,
     deleteBand,
@@ -27,6 +28,10 @@ router
     .get(getBand)
     .put(updateBand)
     .delete(authorize('user', 'paidUser', 'admin'), deleteBand);
+
+router
+    .route('/userbands')
+    .get(getUserBands);
 
 router
     .route('/:id/photo')
