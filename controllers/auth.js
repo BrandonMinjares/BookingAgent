@@ -3,6 +3,7 @@ const User = require('../models/User');
 const sendEmail = require('../utils/email');
 const asyncHandler = require('../middleware/async');
 const passport = require('passport');
+const Bands = require('../models/Bands');
 
 // @desc    Register User
 // @route   POST /auth/register
@@ -53,11 +54,12 @@ exports.logout = (req, res) => {
 // @route   POST /auth/me
 // @access  Private
 exports.getMe = asyncHandler(async (req, res, next) => {
-    const user = await User.findById(req.user.id);
+    const user = await User.findById(req.params.id);
+    const bands = await Bands.find({ user: req.params.id });
 
     res.status(200).json({
         success: true,
-        data: user
+        data: user, bands
     });
 });
 
