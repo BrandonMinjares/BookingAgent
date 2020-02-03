@@ -29,9 +29,11 @@ router
     .put(updateBand)
     .delete(authorize('user', 'paidUser', 'admin'), deleteBand);
 
+/*
 router
     .route('/userbands')
     .get(getUserBands);
+*/
 
 router
     .route('/:id/photo')

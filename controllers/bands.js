@@ -176,11 +176,16 @@ exports.bandPhotoUpload = asyncHandler(async (req, res, next) => {
 
 
 
+/*
+
 // @desc    Find users bands
 // @route   Get bands/:userid/
 // @access  Private
 exports.getUserBands = asyncHandler(async (req, res, next) => {
     console.log(' in get user bands');
-    const band = await Bands.findById(req.params.id);
-    return res.render('show', {band});
+    const bands = await Bands.find({ user: req.params.id });
+    res.status(200).json({ success: true, count: bands.length,
+        data: bands })
 });
+
+*/
