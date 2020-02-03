@@ -150,6 +150,8 @@ app.post('/send', (req, res) => {
 });
 
 
+app.get('/user/:id', (req, res) => res.render('profile'));
+
 
 app.get('/me', (req, res) => res.render('me'));
 app.get('/bandregister', ensureAuthenticated, (req, res) => res.render('bandregister'));
