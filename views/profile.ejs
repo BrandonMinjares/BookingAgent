@@ -1,19 +1,25 @@
 <% include partials/header %>
 
+<div class="container-fluid">
 
-<h3>Hello, <%= user.name %></h3>
+    <h3>Hello, <%= user.name %></h3>
 
-<div class="row">
-    <% bands.forEach(function(band) { %>
-        <div class="col">
-        <h4><%= band.name %></h4>
-        <img class="image-resize-thumbnail" src="/public/uploads/<%=band.photo %>">
-        <p>
-            <a href="/bands/<%= band._id %>" class="btn btn-primary">More Info</a>
-        </p>
-        </div>
-    <% }); %>
+    <div class="row">
+        <ul>
+            <li>
+        <% bands.forEach(function(band) { %>
+        
+                    <h4><%= band.name %></h4>
+                    <img class="image-resize-thumbnail" src="/public/uploads/<%=band.photo %>">
+                    <p>
+                        <a href="/bands/<%= band._id %>" class="btn btn-primary">More Info</a>
+                    </p>
+               
+
+        <% }); %>
+            </li>
+        </ul>
+    </div>
 </div>
-
 
 <% include partials/footer %>
