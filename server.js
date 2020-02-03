@@ -173,10 +173,6 @@ app.get('/dashboard', (req, res) =>
         id: req.user.id
     });
  });
- 
-app.get('/userbands', (req, res) => res.render('userbands'));
-
-
 
 
 const PORT = process.env.PORT || 5000;

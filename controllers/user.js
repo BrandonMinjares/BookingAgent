@@ -1,4 +1,6 @@
 const User = require('../models/User');
+const Bands = require('../models/Bands');
+
 const ErrorResponse = require('../utils/errorResponse');    
 const sendEmail = require('./../utils/email');
 const asyncHandler = require('../middleware/async');
@@ -19,11 +21,14 @@ exports.createUser = asyncHandler(async (req, res, next) => {
 // @access    Private/Admin
 exports.getUser = asyncHandler(async (req, res, next) => {
     const user = await User.findById(req.params.id);
-  
+    const bands = await Bands.find({ user: req.params.id });
+
+    return res.render('profile', {user, bands});
+    /*
     res.status(200).json({
       success: true,
-      data: user
-    });
+      data: user, bands
+    }); */
   });
 
 // @desc    Update user

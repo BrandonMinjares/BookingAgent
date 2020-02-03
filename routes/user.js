@@ -1,4 +1,10 @@
 const express = require('express');
+const { authorize }  = require('../middleware/auth');
+
+const User = require('../models/User');
+
+const router = express.Router({ mergeParams: true });
+
 const {
   getUsers,
   getUser,
@@ -7,14 +13,7 @@ const {
   deleteUser
 } = require('../controllers/user');
 
-const User = require('../models/User');
-
-const router = express.Router({ mergeParams: true });
-
-//const advancedResults = require('../middleware/advancedResults');
-const { authorize } = require('../middleware/auth');
-
-router.use(authorize('admin', 'user', 'paidUser'));
+//router.use(authorize('admin', 'user', 'paidUser'));
 
 router
   .route('/')
