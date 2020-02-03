@@ -4,6 +4,8 @@ const Bands = require('../models/Bands');
 const geocoder = require('../utils/geocoder');
 const asyncHandler = require('../middleware/async');
 const User = require('../models/User');
+var multer = require('multer');
+
 
 // @desc    Get all bands
 // @route   GET /bands

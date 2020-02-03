@@ -10,6 +10,22 @@ const morgan = require('morgan');
 const fileupload = require('express-fileupload');
 const expressLayouts = require('express-ejs-layouts');
 const passport = require('passport');
+const multer = require('multer');
+
+
+// Set Storage Engine
+const storage = multer.diskStorage({
+    destination: './public/img/',
+    filename: function(req, res, cb) {
+        cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+    }
+});
+
+// Init upload
+const upload = multer({
+    storage: storage
+}).single('myImage');
+
 
 const session = require('express-session');
 const flash = require('connect-flash');
