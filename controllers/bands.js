@@ -3,7 +3,7 @@ const ErrorResponse = require('../utils/errorResponse');
 const Bands = require('../models/Bands');
 const geocoder = require('../utils/geocoder');
 const asyncHandler = require('../middleware/async');
-
+const User = require('../models/User');
 
 // @desc    Get all bands
 // @route   GET /bands

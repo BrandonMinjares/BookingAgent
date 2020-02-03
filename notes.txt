@@ -1,2 +1,21 @@
-I think we need to send the user token from the headers to the next page, and every subsequent page until
-the user clicks logout.
+Things to do:
+
+Uploading photo to bands
+Updating, deleting only bands that belong to that userID
+Need to filter band based on needs and location -- filter by genre, cost, location, bands similar
+Reformat bands page to look like Netflix selection
+Converting band names and user info to lower case
+
+
+Permissions - user can only create 1 band, paid user can create many
+Email system - user can get messages
+
+Payment options
+
+Questions, support, feedback
+
+Quote request -- what dates, what band, budget, etc.
+
+Resetting password, new token sent to email
+
+Auth - 2 factor auth
