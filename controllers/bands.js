@@ -11,6 +11,7 @@ var multer = require('multer');
 // @route   GET /bands
 // @access  Public
 exports.getBands = asyncHandler(async (req, res, next) => {
+
     let query
     let queryStr = req.query;
 
@@ -191,3 +192,14 @@ exports.getUserBands = asyncHandler(async (req, res, next) => {
 });
 
 */
+
+
+exports.filterBands = asyncHandler(async (req, res, next) => {
+    const bands = await Bands.find({ name: req.body.name });
+    console.log(bands);
+    return res.render('bands', {bands});
+
+    // Also need to check if at least one exists, or send back to bands page
+
+    
+});

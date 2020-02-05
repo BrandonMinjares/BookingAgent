@@ -178,6 +178,10 @@ app.post('/bandregister', (req, res) => res.redirect('bands'));
 app.get('/bands', function(req, res){
     res.render('bands');
 });
+
+app.post('/bands/search', function(req, res) {
+    res.redirect('bands');
+});
 /*
 app.get('/dashboard', (req, res) =>
  res.render('dashboard', {

@@ -10,7 +10,8 @@ const { authorize }  = require('../middleware/auth');
     updateBand,
     deleteBand,
     getBandsInRadius,
-    bandPhotoUpload
+    bandPhotoUpload,
+    filterBands
  } = require('../controllers/bands');
 
 const Band = require('../models/Bands');
@@ -38,5 +39,11 @@ router
 router
     .route('/:id/photo')
     .put(bandPhotoUpload);
+
+
+
+router
+    .route('/search')
+    .post(filterBands);
 
 module.exports = router;
