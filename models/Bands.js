@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const slugify = require('slugify');
-//const geocoder = require('../utils/geocoder');
+const geocoder = require('../utils/geocoder');
 
 const BandsSchema = new mongoose.Schema({
     name: {
@@ -95,8 +95,8 @@ BandsSchema.pre('save', function(next) {
 });
 
 // Geocode & create location field
-/* BandsSchema.pre('save', async function(next) {
-    //const loc = await geocoder.geocode(this.address);
+ BandsSchema.pre('save', async function(next) {
+    const loc = await geocoder.geocode(this.address);
     this.location = {
         type: 'Point',
         coordinates: [loc[0].longitude, loc[0].latitude],
@@ -111,7 +111,7 @@ BandsSchema.pre('save', function(next) {
     // Do not save address in DB
     this.address = undefined;
     next();
-}); */
+}); 
 
 // Reverse populate with virtuals
 BandsSchema.virtual('bands', {
