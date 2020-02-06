@@ -197,9 +197,7 @@ exports.getUserBands = asyncHandler(async (req, res, next) => {
 exports.filterBands = asyncHandler(async (req, res, next) => {
     const bands = await Bands.find({ name: req.body.name });
     console.log(bands);
-    return res.render('bands', {bands});
+    return res.render('show', {bands});
 
-    // Also need to check if at least one exists, or send back to bands page
-
-
+    // Also need to check if at least one exists, or send back to bands
 });
