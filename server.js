@@ -13,6 +13,9 @@ const passport = require('passport');
 const multer = require('multer');
 
 
+const Bands = require('./models/Bands');
+
+
 // Set Storage Engine
 const storage = multer.diskStorage({
     destination: './public/img/',
@@ -173,24 +176,13 @@ app.get('/me', (req, res) => res.render('me'));
 app.get('/bandregister', ensureAuthenticated, (req, res) => res.render('bandregister'));
 
 // Only tmp to see if axios works
-app.post('/bandregister', (req, res) => res.redirect('bands'));
+app.post('/bandregister', ensureAuthenticated, (req, res) => res.redirect('bands'));
 
-app.get('/bands', function(req, res){
-    res.render('bands');
-});
-/*
-app.get('/dashboard', (req, res) =>
- res.render('dashboard', {
-     user: req.user.name
- }));
-*/
+app.get('/bands', (req, res) => res.render('bands'));
 
-
- app.get('/dashboard', ensureAuthenticated, function(req, res) {
-    res.render('dashboard', {
-        name: req.user.name,
-        id: req.user.id
-    });
+ app.get('/dashboard', ensureAuthenticated, async(req, res) => {
+    const bands = await Bands.find({ user: req.body.id });
+    res.render('dashboard', {name: req.user.name, id: req.user.id, bands});
  });
 
 

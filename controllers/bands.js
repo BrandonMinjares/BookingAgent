@@ -11,12 +11,12 @@ var multer = require('multer');
 // @route   GET /bands
 // @access  Public
 exports.getBands = asyncHandler(async (req, res, next) => {
-
-    let query
+    const bands = await Bands.find({ user: req.body.id });
+   /*  let query
     let queryStr = req.query;
 
     query = Bands.find(queryStr);
-    const bands = await query;
+    const bands = await query; */
 
     // If no req query then all bands get render because none are being filtered
     return res.render('bands', {bands});

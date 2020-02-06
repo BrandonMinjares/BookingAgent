@@ -4,7 +4,18 @@
 
 
 
-<h3>Manage Bands</h3>
+<div class="row">
+    <h3>Manage Bands</h3>
+<% bands.forEach(function(band) { %>
+    <div class="col">
+    <h4><%= band.name %></h4>
+    </div>
+<% }); %>
+</div>
+
+
+
+<h3>Calendar</h3>
 <a href="/logout" class="btn btn-secondary">Logout</a>
 
 
