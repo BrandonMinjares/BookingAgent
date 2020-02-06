@@ -180,7 +180,7 @@ app.get('/bands', function(req, res){
 });
 
 app.post('/bands/search', function(req, res) {
-    res.redirect('bands');
+    res.render('bands');
 });
 /*
 app.get('/dashboard', (req, res) =>

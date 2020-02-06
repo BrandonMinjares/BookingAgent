@@ -201,5 +201,5 @@ exports.filterBands = asyncHandler(async (req, res, next) => {
 
     // Also need to check if at least one exists, or send back to bands page
 
-    
+
 });
