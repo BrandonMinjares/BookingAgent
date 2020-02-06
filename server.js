@@ -120,7 +120,7 @@ app.post('/login', function(req, res, next) {
     })(req, res, next);
 });
 
-
+app.post('/bands', ensureAuthenticated, (req, res) => res.redirect('show'));
 
 app.get('/register', (req, res) => res.render('register'));
 app.get('/contact', (req, res) => res.render('contact'));

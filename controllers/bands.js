@@ -1,7 +1,7 @@
 const path = require('path');
 const ErrorResponse = require('../utils/errorResponse');
 const Bands = require('../models/Bands');
-const geocoder = require('../utils/geocoder');
+//const geocoder = require('../utils/geocoder');
 const asyncHandler = require('../middleware/async');
 const User = require('../models/User');
 var multer = require('multer');
@@ -50,6 +50,7 @@ exports.getBand = asyncHandler(async (req, res, next) => {
 // @route   POST bands/
 // @access  Private
 exports.createBand = asyncHandler(async (req, res, next) => {
+    console.log(req.body.name);
     // Add user to req.body
     req.body.user = req.user.id;
     // Checks if a band has already been created
