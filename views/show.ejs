@@ -3,14 +3,15 @@
 <div class = "container-fluid">
     <div class ="row">
         <div class="col">
-            in show
             <img class="image-resize-thumbnail" src="/public/uploads/<%=bands.photo %>">
-            <h4><%= bands.name %><h4>
-            <h4><%= bands.description %></h4>
-            <h4><%= bands.genre %></h4>
+            <h4 id="band-name"><%= bands.name %><h4>
+            <h4 id="band-description"><%= bands.description %></h4>
+            <h4 id=band-genre><%= bands.genre %></h4>
         </div>
         <button>Delete Band</button>
-        <button>Update Band</button>
+        <button><a href="/bands/update">Update Band</a></button>
+        <button>Request Quotes</button>
+
     </div>
 </div>
 

@@ -1,10 +1,22 @@
-function updateInfo() {
-    const bandName = document.getElementById("band-name").textContent = ' he';
-    const bandDescription = document.getElementById("band-description").textContent = ' he';
-    const bandGenre = document.getElementById("band-genre").textContent = ' he';
-    //alert(bandName + bandDescription + bandGenre);
+const updateBand = document.querySelector('.updateBand');
+    if(filterForm) {
+        addEventListener('submit', e => {
+            const name = document.getElementById('bandname').value;
+            update(name);
+        }); 
 }
+ 
+const update = async (name) => {
+    try {
+        const res = await axios({
+        method:'POST',
+        url: 'http://localhost:5000/bands/:id',
+        data: {
+            name
+        }
+    });
 
-
-// Maybe my clicking update we turn it into a form?? And then clicking done makes a put request 
-// to update band, then redirect back to the band page??
+} catch (err) {
+        alert(err.response.data.message);
+    }
+};
