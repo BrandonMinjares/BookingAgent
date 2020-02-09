@@ -1,8 +1,6 @@
 const express = require('express');
 const { authorize }  = require('../middleware/auth');
 
-const User = require('../models/User');
-
 const router = express.Router({ mergeParams: true });
 
 const {
