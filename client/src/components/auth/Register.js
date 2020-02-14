@@ -1,72 +1,41 @@
-import React, { Component, Fragment } from 'react'
+import React, { useState, Fragment } from 'react'
+// useState is a hook, returns current state value and function that lets you update it
 
-// This has to be a class component because it will be manipulating data
+// Hooks dont work inside classes
+// Hooks allow you to use state without writing a class
 
-class Register extends Component {
-    constructor(props) {
-        super(props)
+// There is no this
+const Register = () => {
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        password: ''
+    });
 
-        this.state = {
-            name: '',
-            email: '',
-            password: ''
-        };
+    const { name, email, password} = formData;
+
+    const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
+    const onSubmit = e => {
+        e.preventDefault();
+         console.log(formData);
     }
 
-    // When it's an arrow function this works
-
-    handleNameChange = (event) => {
-        this.setState({ 
-            name: event.target.value 
-        });
-    }
-    
-    handleEmailChange = (event) => {
-        this.setState({ 
-            email: event.target.value 
-        });
-    }
-
-    handlePasswordChange = (event) => {
-        this.setState({ 
-            password: event.target.value 
-        });
-    }
-    
-    handleSubmit = (event) => {
-        alert('User info: ' + this.state.name + this.state.email + this.state.password);
-        event.preventDefault();
-      }
-
-
-    render() {
-        return (
-            <Fragment>
-                <form onSubmit={this.handleSubmit}>
+    return (
+        <Fragment>
+            <form onSubmit={e => onSubmit(e)}>
                     <label>
-                        Name:<input type="text" name="name" value={this.state.name} onChange={this.handleNameChange} />
+                        Name:<input type="text" name="name" value={name} onChange={e => onChange(e)} required/>
                     </label>
                     <label>
-                        Email:<input type="email" name="email" value={this.state.email} onChange={this.handleEmailChange} />
+                        Email:<input type="email" name="email" value={email} onChange={e => onChange(e)} required/>
                     </label>
                     <label>
-                        Password:<input type="password" name="password" value={this.state.password} onChange={this.handlePasswordChange} />
+                        Password:<input type="password" name="password" value={password} onChange={e => onChange(e)} required/>
                     </label>
                     <input type="submit" value="Submit" />
                 </form>
-            </Fragment>
-        )
-    }
-
-    // Component did mount -- called once, immediately after the render has taken place
-    // used to perform any DOM manipulation of data-fetching
+        </Fragment>
+    )
 }
 
-
-// Component did mount, which updates the data without the user having to refresh the page
-
-
-// componentwillunmount -- cleans up any processes that was set up in component did mount,
-// such as clearning an interval
-
-export default Register
+export default Register;
