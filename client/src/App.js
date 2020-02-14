@@ -1,13 +1,8 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Fragment } from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <h2>Hey there</h2>
-    </div>
-  );
-}
-
+const App = () =>
+    <Fragment>
+        <h2>Hey there</h2>
+    </Fragment>
 export default App;
