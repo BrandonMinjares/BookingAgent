@@ -3,22 +3,38 @@ import React, { Component, Fragment } from 'react'
 // This has to be a class component because it will be manipulating data
 
 class Register extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props)
+
         this.state = {
             name: '',
             email: '',
             password: ''
         };
-
     }
 
-    handleChange(event) {
-        this.setState({ [event.target.name]: event.target.value });
+    // When it's an arrow function this works
+
+    handleNameChange = (event) => {
+        this.setState({ 
+            name: event.target.value 
+        });
     }
     
-    handleSubmit(event) {
-        alert('A name was submitted: ' + this.state.name);
+    handleEmailChange = (event) => {
+        this.setState({ 
+            email: event.target.value 
+        });
+    }
+
+    handlePasswordChange = (event) => {
+        this.setState({ 
+            password: event.target.value 
+        });
+    }
+    
+    handleSubmit = (event) => {
+        alert('User info: ' + this.state.name + this.state.email + this.state.password);
         event.preventDefault();
       }
 
@@ -28,13 +44,13 @@ class Register extends Component {
             <Fragment>
                 <form onSubmit={this.handleSubmit}>
                     <label>
-                        Name:<input type="text" name="name" value={this.state.name} onChange={this.handleChange} />
+                        Name:<input type="text" name="name" value={this.state.name} onChange={this.handleNameChange} />
                     </label>
                     <label>
-                        Email:<input type="email" name="email" value={this.state.email} onChange={this.handleChange} />
+                        Email:<input type="email" name="email" value={this.state.email} onChange={this.handleEmailChange} />
                     </label>
                     <label>
-                        Password:<input type="password" name="password" value={this.state.password} onChange={this.handleChange} />
+                        Password:<input type="password" name="password" value={this.state.password} onChange={this.handlePasswordChange} />
                     </label>
                     <input type="submit" value="Submit" />
                 </form>
