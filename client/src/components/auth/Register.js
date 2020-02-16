@@ -1,11 +1,16 @@
-import React, { useState, Fragment } from 'react'
+import React, { Fragment, useState } from 'react';
+import { connect } from 'react-redux';
+import { Link, Redirect } from 'react-router-dom';
+import { register } from '../../actions/auth';
+import PropTypes from 'prop-types';
+
 // useState is a hook, returns current state value and function that lets you update it
 
 // Hooks dont work inside classes
 // Hooks allow you to use state without writing a class
 
 // There is no this
-const Register = () => {
+const Register = ({ register }) => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -13,16 +18,15 @@ const Register = () => {
     });
 
     const { name, email, password} = formData;
-
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
-    const onSubmit = e => {
+    const onSubmit = async e => {
         e.preventDefault();
-         console.log(formData);
-    }
+        register({ name, email, password });
+    };
 
     return (
         <Fragment>
-            <form onSubmit={e => onSubmit(e)}>
+            <form className='form' onSubmit={e => onSubmit(e)}>
                     <label>
                         Name:<input type="text" name="name" value={name} onChange={e => onChange(e)} required/>
                     </label>
@@ -38,4 +42,10 @@ const Register = () => {
     )
 }
 
-export default Register;
+Register.propTypes = {
+    setAlert: PropTypes.func.isRequired,
+    register: PropTypes.func.isRequired,
+  };
+  
+
+export default connect(null, { register })(Register);
