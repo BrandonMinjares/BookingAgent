@@ -105,85 +105,85 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // EJS
 // Must be above the set view engine
-app.set("view engine", "ejs");
+// app.set("view engine", "ejs");
 
 
-// App.get gets the pathway that is added
-// Renders a view and sends the rendered HTML string to the client
-app.get('/', (req, res) => res.render('home'));
-app.get('/home', (req, res) => res.render('home'));
-app.get('/login', (req, res) => res.render('login'));
-app.post('/login', function(req, res, next) {
-    passport.authenticate('local', {
-        successRedirect: '/dashboard',
-        failureRedirect: '/login'
-    })(req, res, next);
-});
+// // App.get gets the pathway that is added
+// // Renders a view and sends the rendered HTML string to the client
+// app.get('/', (req, res) => res.render('home'));
+// app.get('/home', (req, res) => res.render('home'));
+// app.get('/login', (req, res) => res.render('login'));
+// app.post('/login', function(req, res, next) {
+//     passport.authenticate('local', {
+//         successRedirect: '/dashboard',
+//         failureRedirect: '/login'
+//     })(req, res, next);
+// });
 
-app.post('/bands', ensureAuthenticated, (req, res) => res.redirect('show'));
+// app.post('/bands', ensureAuthenticated, (req, res) => res.redirect('show'));
 
-app.get('/register', (req, res) => res.render('register'));
-app.get('/contact', (req, res) => res.render('contact'));
+// app.get('/register', (req, res) => res.render('register'));
+// app.get('/contact', (req, res) => res.render('contact'));
 
-app.get('/posts', ensureAuthenticated, (req, res) => res.render('posts'));
+// app.get('/posts', ensureAuthenticated, (req, res) => res.render('posts'));
 
-app.post('/register', (req, res) => {
-    //const { name, email, password, password2 } = req.body;
-    //console.log(name + email + password);
-    //const info = req.body;
-    res.redirect('login');
-});
+// app.post('/register', (req, res) => {
+//     //const { name, email, password, password2 } = req.body;
+//     //console.log(name + email + password);
+//     //const info = req.body;
+//     res.redirect('login');
+// });
 
-app.get('/logout', function(req, res) {
-    console.log('LOGGED OUT');
-    req.logout();
-    /*
-    req.session.destroy(function (err) {
-        if (err) { return next(err); }
-        // The response should indicate that the user is no longer authenticated.
-        return res.send({ authenticated: req.isAuthenticated() });
-      });
-    */
+// app.get('/logout', function(req, res) {
+//     console.log('LOGGED OUT');
+//     req.logout();
+//     /*
+//     req.session.destroy(function (err) {
+//         if (err) { return next(err); }
+//         // The response should indicate that the user is no longer authenticated.
+//         return res.send({ authenticated: req.isAuthenticated() });
+//       });
+//     */
 
-    res.redirect('login');
-});
-//app.post('/bands', (req, res) => res.redirect('home'));
+//     res.redirect('login');
+// });
+// //app.post('/bands', (req, res) => res.redirect('home'));
 
-//Send Email
-app.post('/send', (req, res) => {
-    console.log(req.body);
+// //Send Email
+// app.post('/send', (req, res) => {
+//     console.log(req.body);
 
-    try {
-        sendEmail({
-            name: req.body.name,
-            email: req.body.email,
-            number: req.body.number,
-            subject: req.body.subject,
-            message: req.body.message
-        });
+//     try {
+//         sendEmail({
+//             name: req.body.name,
+//             email: req.body.email,
+//             number: req.body.number,
+//             subject: req.body.subject,
+//             message: req.body.message
+//         });
 
-    } catch (err) {
-        console.log(err);
-    }
-    res.redirect('dashboard');
-});
-
-
-app.get('/user/:id', (req, res) => res.render('profile'));
+//     } catch (err) {
+//         console.log(err);
+//     }
+//     res.redirect('dashboard');
+// });
 
 
-app.get('/me', (req, res) => res.render('me'));
-app.get('/bandregister', ensureAuthenticated, (req, res) => res.render('bandregister'));
+// app.get('/user/:id', (req, res) => res.render('profile'));
 
-// Only tmp to see if axios works
-app.post('/bandregister', ensureAuthenticated, (req, res) => res.redirect('bands'));
 
-app.get('/bands', (req, res) => res.render('bands'));
+// app.get('/me', (req, res) => res.render('me'));
+// app.get('/bandregister', ensureAuthenticated, (req, res) => res.render('bandregister'));
 
- app.get('/dashboard', ensureAuthenticated, async(req, res) => {
-    const bands = await Bands.find({ user: req.body.id });
-    res.render('dashboard', {name: req.user.name, id: req.user.id, bands});
- });
+// // Only tmp to see if axios works
+// app.post('/bandregister', ensureAuthenticated, (req, res) => res.redirect('bands'));
+
+// app.get('/bands', (req, res) => res.render('bands'));
+
+//  app.get('/dashboard', ensureAuthenticated, async(req, res) => {
+//     const bands = await Bands.find({ user: req.body.id });
+//     res.render('dashboard', {name: req.user.name, id: req.user.id, bands});
+//  });
 
 
 const PORT = process.env.PORT || 5000;

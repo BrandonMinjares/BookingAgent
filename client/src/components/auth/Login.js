@@ -1,13 +1,47 @@
-import React, { Component } from 'react'
+import React, { Fragment, useState } from 'react';
+import { connect } from 'react-redux';
+import { Link, Redirect } from 'react-router-dom';
+import { login } from '../../actions/auth';
+import PropTypes from 'prop-types';
 
-class Login extends Component {
-    render() {
-        return (
-            <div>
-                Login
-            </div>
-        )
-    }
+// useState is a hook, returns current state value and function that lets you update it
+
+// Hooks dont work inside classes
+// Hooks allow you to use state without writing a class
+
+// There is no this
+const Login = ({ login }) => {
+    const [formData, setFormData] = useState({
+        email: '',
+        password: ''
+    });
+
+    const { email, password} = formData;
+    const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
+    const onSubmit = async e => {
+        e.preventDefault();
+        login({ email, password });
+    };
+
+    return (
+        <Fragment>
+            <form className='form' onSubmit={e => onSubmit(e)}>
+                    <label>
+                        Email:<input type="email" name="email" value={email} onChange={e => onChange(e)} required/>
+                    </label>
+                    <label>
+                        Password:<input type="password" name="password" value={password} onChange={e => onChange(e)} required/>
+                    </label>
+                    <input type="submit" value="Submit" />
+                </form>
+        </Fragment>
+    )
 }
 
-export default Login
+login.propTypes = {
+    setAlert: PropTypes.func.isRequired,
+    login: PropTypes.func.isRequired,
+  };
+  
+
+export default connect(null, { login })(Login);
