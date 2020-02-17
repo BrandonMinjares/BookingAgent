@@ -26,12 +26,9 @@ import {
         };
       case REGISTER_SUCCESS:
       case LOGIN_SUCCESS:
-        localStorage.setItem('token', payload.token);
         return {
           ...state,
           ...payload,
-          isAuthenticated: true,
-          loading: false
         };
       case ACCOUNT_DELETED:
         localStorage.removeItem('token');
